@@ -5,7 +5,7 @@ Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-conte
 Author URI: http://www.webaware.com.au/
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.0.1
-Tested up to: 3.3.1
+Tested up to: 3.3.2
 Stable tag: 1.0.0
 
 A very simple plugin that fixes some common problems with insecure content on pages using SSL.

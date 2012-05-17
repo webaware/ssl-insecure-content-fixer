@@ -3,6 +3,7 @@ Contributors: webaware
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Author URI: http://www.webaware.com.au/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FNFKTWZPRJDQE
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.0.1
 Tested up to: 3.3.2

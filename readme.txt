@@ -22,6 +22,7 @@ It is very lightweight, so it doesn't impact on performance, but that also means
 * stylesheets that are registered using wp_register_style or wp_enqueue_style
 * the stylesheet loaded by the links-shortcode plugin
 * the stylesheet loaded by the list-category-posts-with-pagination plugin
+* the stylesheet loaded by the youtube-feeder plugin
 
 I'll be adding other fixes as I become aware of other problems that can be easily fixed. The better solution is to get errant plugins fixed by their authors, but until they do, let me know about other problems and I'll attempt to add fixes for them to this plugin.
 

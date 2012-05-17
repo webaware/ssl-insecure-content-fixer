@@ -3,12 +3,21 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: A very simple plugin that fixes some common problems with insecure content on pages using SSL.
-Version: 1.0.0
+Version: 1.1.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
 
 class SSLInsecureContentFixer {
+
+	/**
+	* hook WordPress to handle script and style fixes
+	*/
+	public static function run() {
+		add_action('wp_print_scripts', array(__CLASS__, 'scriptsFix'), 100);
+		add_action('wp_print_styles', array(__CLASS__, 'stylesFix'), 100);
+	}
+
 	/**
 	* force plugins to load scripts with SSL if page is SSL
 	*/
@@ -45,20 +54,49 @@ class SSLInsecureContentFixer {
 				// force links-shortcode plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
 				if (function_exists('linkssc_css') && is_dir(WP_PLUGIN_DIR . '/links-shortcode')) {
 					remove_action('wp_head', 'linkssc_css');
-					$url = plugins_url('links-shortcode.css', 'links-shortcode/links-shortcode.php');
+					$url = plugins_url('links-shortcode.css', 'links-shortcode/x');
 					wp_enqueue_style('links-shortcode', $url);
 				}
 
 				// force list-category-posts-with-pagination plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
 				if (function_exists('admin_register_head') && is_dir(WP_PLUGIN_DIR . '/list-category-posts-with-pagination')) {
 					remove_action('wp_head', 'admin_register_head');
-					$url = plugins_url('pagination.css', 'list-category-posts-with-pagination/list-category-posts-with-pagination.php');
+					$url = plugins_url('pagination.css', 'list-category-posts-with-pagination/x');
 					wp_enqueue_style('lcpwp', $url);
+				}
+
+				// force youtube-feeder plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
+				if (class_exists('YoutubeFeeder') && is_dir(WP_PLUGIN_DIR . '/youtube-feeder')) {
+					self::removeObjectFilters('wp_head', 'YoutubeFeeder');
+					$url = plugins_url('css/style.css', 'youtube-feeder/x');
+					wp_enqueue_style('youtube-feeder', $url);
+				}
+			}
+		}
+	}
+
+	/**
+	* remove filters that are methods of an object of some class
+	* @param string $filterName name of action or filter hook
+	* @param string $className name of class for object method
+	*/
+	private static function removeObjectFilters($filterName, $className) {
+		global $wp_filter;
+
+		// must take a variable to iterate over array of filters,
+		// else a subtle reference bug messes up the original array!
+		$filters = $wp_filter[$filterName];
+
+		foreach ($filters as $priority => $hooks) {
+			foreach ($hooks as $idx => $filter) {
+				// check for function being a method on a $className object
+				if (is_array($filter['function']) && is_a($filter['function'][0], $className)) {
+					remove_filter($filterName, $idx, $priority);
+					break;
 				}
 			}
 		}
 	}
 }
 
-add_action('wp_print_scripts', array('SSLInsecureContentFixer', 'scriptsFix'), 100);
-add_action('wp_print_styles', array('SSLInsecureContentFixer', 'stylesFix'), 100);
+SSLInsecureContentFixer::run();

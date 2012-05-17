@@ -31,7 +31,7 @@ I'll be adding other fixes as I become aware of other problems that can be easil
 1. Upload this plugin to your /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-If your browser still reports insecure content, tell me the URL of the problem page.
+If your browser still reports insecure content, tell me the URL of the problem page in [the forum](http://wordpress.org/tags/ssl-insecure-content-fixer?forum_id=10).
 
 == Frequently Asked Questions ==
 
@@ -41,7 +41,7 @@ You are probably loading content with a URL that starts with "http:". Take that 
 
 = I still get "insecure content" warnings on my secure page =
 
-Post about it to the forum, and be sure to include a link to the page. Posts without working links will be ignored.
+Post about it to [the forum](http://wordpress.org/tags/ssl-insecure-content-fixer?forum_id=10), and be sure to include a link to the page. Posts without working links will be ignored.
 
 = You listed my plugin, but I've fixed it =
 

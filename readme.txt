@@ -6,8 +6,8 @@ Author URI: http://www.webaware.com.au/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FNFKTWZPRJDQE
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.0.1
-Tested up to: 3.3.2
-Stable tag: 1.1.0
+Tested up to: 3.4.1
+Stable tag: 1.2.0
 
 A very simple plugin that fixes some common problems with insecure content on pages using SSL.
 
@@ -23,7 +23,6 @@ It is very lightweight, so it doesn't impact on performance, but that also means
 * stylesheets that are registered using wp_register_style or wp_enqueue_style
 * the stylesheet loaded by the links-shortcode plugin
 * the stylesheet loaded by the list-category-posts-with-pagination plugin
-* the stylesheet loaded by the youtube-feeder plugin
 
 I'll be adding other fixes as I become aware of other problems that can be easily fixed. The better solution is to get errant plugins fixed by their authors, but until they do, let me know about other problems and I'll attempt to add fixes for them to this plugin.
 
@@ -50,8 +49,11 @@ Great! Tell me which plugin is yours, and how to check for your new version, and
 
 == Changelog ==
 
+= 1.2.0 [2012-07-21] =
+* removed: fix for youtube-feeder; NB: v2.0.0 of that plugin still loads Youtube videos over http, so you will still get insecure content errors on pages with embedded videos until plugin author applies a fix.
+
 = 1.1.0 [2012-05-17] =
-* added: handle youtube-fixer
+* added: fix for youtube-feeder stylesheet
 
 = 1.0.0 [2012-04-19] =
 * initial release

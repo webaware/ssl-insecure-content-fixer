@@ -3,7 +3,7 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: A very simple plugin that fixes some common problems with insecure content on pages using SSL.
-Version: 1.1.0
+Version: 1.2.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
@@ -63,13 +63,6 @@ class SSLInsecureContentFixer {
 					remove_action('wp_head', 'admin_register_head');
 					$url = plugins_url('pagination.css', 'list-category-posts-with-pagination/x');
 					wp_enqueue_style('lcpwp', $url);
-				}
-
-				// force youtube-feeder plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
-				if (class_exists('YoutubeFeeder') && is_dir(WP_PLUGIN_DIR . '/youtube-feeder')) {
-					self::removeObjectFilters('wp_head', 'YoutubeFeeder');
-					$url = plugins_url('css/style.css', 'youtube-feeder/x');
-					wp_enqueue_style('youtube-feeder', $url);
 				}
 			}
 		}

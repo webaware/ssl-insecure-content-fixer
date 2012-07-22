@@ -3,7 +3,7 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: A very simple plugin that fixes some common problems with insecure content on pages using SSL.
-Version: 1.2.0
+Version: 1.3.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
@@ -49,13 +49,6 @@ class SSLInsecureContentFixer {
 					// only fix if source URL starts with http://
 					if (stripos($style->src, 'http://') !== FALSE)
 						$style->src = str_replace('http://', 'https://', $style->src);
-				}
-
-				// force links-shortcode plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
-				if (function_exists('linkssc_css') && is_dir(WP_PLUGIN_DIR . '/links-shortcode')) {
-					remove_action('wp_head', 'linkssc_css');
-					$url = plugins_url('links-shortcode.css', 'links-shortcode/x');
-					wp_enqueue_style('links-shortcode', $url);
 				}
 
 				// force list-category-posts-with-pagination plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)

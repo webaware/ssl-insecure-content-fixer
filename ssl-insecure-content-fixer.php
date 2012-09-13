@@ -2,11 +2,16 @@
 /*
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
-Description: A very simple plugin that fixes some common problems with insecure content on pages using SSL.
-Version: 1.3.0
+Description: Fix some common problems with insecure content on pages using SSL
+Version: 1.4.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
+
+if (!defined('SSLFIX_PLUGIN_ROOT')) {
+	define('SSLFIX_PLUGIN_ROOT', dirname(__FILE__) . '/');
+	define('SSLFIX_PLUGIN_NAME', basename(dirname(__FILE__)) . '/' . basename(__FILE__));
+}
 
 class SSLInsecureContentFixer {
 
@@ -16,6 +21,22 @@ class SSLInsecureContentFixer {
 	public static function run() {
 		add_action('wp_print_scripts', array(__CLASS__, 'scriptsFix'), 100);
 		add_action('wp_print_styles', array(__CLASS__, 'stylesFix'), 100);
+		add_filter('plugin_row_meta', array(__CLASS__, 'addPluginDetailsLinks'), 10, 2);
+		add_filter('image_widget_image_url', array(__CLASS__, 'filterImageWidgetURL'));
+	}
+
+	/**
+	* action hook for adding plugin details links
+	*/
+	public static function addPluginDetailsLinks($links, $file) {
+		// add settings link
+		if ($file == SSLFIX_PLUGIN_NAME) {
+			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Support') . '</a>';
+			$links[] = '<a href="http://wordpress.org/extend/plugins/ssl-insecure-content-fixer/">' . __('Rating') . '</a>';
+			$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=FNFKTWZPRJDQE">' . __('Donate') . '</a>';
+		}
+
+		return $links;
 	}
 
 	/**
@@ -30,7 +51,7 @@ class SSLInsecureContentFixer {
 				foreach ((array) $wp_scripts->registered as $script) {
 					// only fix if source URL starts with http://
 					if (stripos($script->src, 'http://') !== FALSE)
-						$script->src = str_replace('http://', 'https://', $script->src);
+						$script->src = self::fixURL($script->src);
 				}
 			}
 		}
@@ -48,7 +69,7 @@ class SSLInsecureContentFixer {
 				foreach ((array) $wp_styles->registered as $style) {
 					// only fix if source URL starts with http://
 					if (stripos($style->src, 'http://') !== FALSE)
-						$style->src = str_replace('http://', 'https://', $style->src);
+						$style->src = self::fixURL($style->src);
 				}
 
 				// force list-category-posts-with-pagination plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
@@ -59,6 +80,29 @@ class SSLInsecureContentFixer {
 				}
 			}
 		}
+	}
+
+	/**
+	* filter Image Widget image links to load over SSL if page is SSL
+	* @return string
+	*/
+	public static function filterImageWidgetURL($imageurl) {
+		if (is_ssl()) {
+			// only fix if source URL starts with http://
+			if (stripos($imageurl, 'http://') !== FALSE)
+				$imageurl = self::fixURL($imageurl);
+		}
+
+		return $imageurl;
+	}
+
+	/**
+	* replace URL with one that uses SSL
+	* @param string $url
+	* @return string
+	*/
+	private static function fixURL($url) {
+		return str_replace('http://', 'https://', $url);
 	}
 
 	/**

@@ -6,14 +6,14 @@ Author URI: http://www.webaware.com.au/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FNFKTWZPRJDQE
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.0.1
-Tested up to: 3.4.1
-Stable tag: 1.3.0
+Tested up to: 3.4.2
+Stable tag: 1.4.0
 
-A very simple plugin that fixes some common problems with insecure content on pages using SSL.
+Fix some common problems with insecure content on pages using SSL
 
 == Description ==
 
-It’s quite common to use WordPress as the host for an online shop, and that often means having an order page that needs to be encrypted via SSL. You don’t want your customers providing credit card details or other sensitive information over an unencrypted connection! But some WordPress plugins don’t take SSL into account, and merrily load scripts and stylesheets without encryption. This plugin attempts to fix this problem, where there are simple solutions. How it does this is described in [this blog post](http://snippets.webaware.com.au/snippets/cleaning-up-wordpress-plugin-script-and-stylesheet-loads-over-ssl/).
+Fix some common problems with insecure content on pages using SSL. Mostly, the fixes are CSS and JavaScript links that don't use SSL. How it does this is described in [this blog post](http://snippets.webaware.com.au/snippets/cleaning-up-wordpress-plugin-script-and-stylesheet-loads-over-ssl/).
 
 It is very lightweight, so it doesn't impact on performance, but that also means it doesn't catch everything. Some fixes need a bigger hammer, like the [WordPress HTTPS](http://wordpress.org/extend/plugins/wordpress-https/) plugin. If your problem is small, a small solution like this one might fit better.
 
@@ -22,6 +22,7 @@ It is very lightweight, so it doesn't impact on performance, but that also means
 * scripts that are registered using wp_register_script or wp_enqueue_script
 * stylesheets that are registered using wp_register_style or wp_enqueue_style
 * the stylesheet loaded by the list-category-posts-with-pagination plugin
+* images loaded by [Image Widget](http://wordpress.org/extend/plugins/image-widget/)
 
 I'll be adding other fixes as I become aware of other problems that can be easily fixed. The better solution is to get errant plugins fixed by their authors, but until they do, let me know about other problems and I'll attempt to add fixes for them to this plugin.
 
@@ -47,6 +48,9 @@ Post about it to [the forum](http://wordpress.org/support/plugin/ssl-insecure-co
 Great! Tell me which plugin is yours, and how to check for your new version, and I'll drop the "fix" from my next release.
 
 == Changelog ==
+
+= 1.4.0 [2012-09-13] =
+* added: fix for images loaded by [Image Widget](http://wordpress.org/extend/plugins/image-widget/)
 
 = 1.3.0 [2012-07-22] =
 * removed: fix for links-shortcode (fixed in v1.3)

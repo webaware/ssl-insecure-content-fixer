@@ -3,7 +3,7 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: Fix some common problems with insecure content on pages using SSL
-Version: 1.4.0
+Version: 1.4.1
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
@@ -19,10 +19,15 @@ class SSLInsecureContentFixer {
 	* hook WordPress to handle script and style fixes
 	*/
 	public static function run() {
-		add_action('wp_print_scripts', array(__CLASS__, 'scriptsFix'), 100);
-		add_action('wp_print_styles', array(__CLASS__, 'stylesFix'), 100);
 		add_filter('plugin_row_meta', array(__CLASS__, 'addPluginDetailsLinks'), 10, 2);
-		add_filter('image_widget_image_url', array(__CLASS__, 'filterImageWidgetURL'));
+
+		if (is_ssl() && !is_admin()) {
+			add_action('wp_print_scripts', array(__CLASS__, 'scriptsFix'), 100);
+			add_action('wp_print_styles', array(__CLASS__, 'stylesFix'), 100);
+
+			// filter Image Widget image links
+			add_filter('image_widget_image_url', array(__CLASS__, 'filterImageWidgetURL'));
+		}
 	}
 
 	/**
@@ -45,15 +50,11 @@ class SSLInsecureContentFixer {
 	public static function scriptsFix() {
 		global $wp_scripts;
 
-		if (is_ssl()) {
-			if (!is_admin()) {
-				// search the registered scripts for any that will load as insecure content
-				foreach ((array) $wp_scripts->registered as $script) {
-					// only fix if source URL starts with http://
-					if (stripos($script->src, 'http://') !== FALSE)
-						$script->src = self::fixURL($script->src);
-				}
-			}
+		// search the registered scripts for any that will load as insecure content
+		foreach ((array) $wp_scripts->registered as $script) {
+			// only fix if source URL starts with http://
+			if (stripos(ltrim($script->src), 'http://') === 0)
+				$script->src = self::fixURL($script->src);
 		}
 	}
 
@@ -63,22 +64,18 @@ class SSLInsecureContentFixer {
 	public static function stylesFix() {
 		global $wp_styles;
 
-		if (is_ssl()) {
-			if (!is_admin()) {
-				// search the registered stylesheets for any that will load as insecure content
-				foreach ((array) $wp_styles->registered as $style) {
-					// only fix if source URL starts with http://
-					if (stripos($style->src, 'http://') !== FALSE)
-						$style->src = self::fixURL($style->src);
-				}
+		// search the registered stylesheets for any that will load as insecure content
+		foreach ((array) $wp_styles->registered as $style) {
+			// only fix if source URL starts with http://
+			if (stripos(ltrim($style->src), 'http://') === 0)
+				$style->src = self::fixURL($style->src);
+		}
 
-				// force list-category-posts-with-pagination plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
-				if (function_exists('admin_register_head') && is_dir(WP_PLUGIN_DIR . '/list-category-posts-with-pagination')) {
-					remove_action('wp_head', 'admin_register_head');
-					$url = plugins_url('pagination.css', 'list-category-posts-with-pagination/x');
-					wp_enqueue_style('lcpwp', $url);
-				}
-			}
+		// force list-category-posts-with-pagination plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
+		if (function_exists('admin_register_head') && is_dir(WP_PLUGIN_DIR . '/list-category-posts-with-pagination')) {
+			remove_action('wp_head', 'admin_register_head');
+			$url = plugins_url('pagination.css', 'list-category-posts-with-pagination/x');
+			wp_enqueue_style('lcpwp', $url);
 		}
 	}
 
@@ -87,10 +84,9 @@ class SSLInsecureContentFixer {
 	* @return string
 	*/
 	public static function filterImageWidgetURL($imageurl) {
-		if (is_ssl()) {
-			// only fix if source URL starts with http://
-			if (stripos($imageurl, 'http://') !== FALSE)
-				$imageurl = self::fixURL($imageurl);
+		// only fix if source URL starts with http://
+		if (stripos(ltrim($imageurl), 'http://') === 0) {
+			$imageurl = self::fixURL($imageurl);
 		}
 
 		return $imageurl;
@@ -102,7 +98,7 @@ class SSLInsecureContentFixer {
 	* @return string
 	*/
 	private static function fixURL($url) {
-		return str_replace('http://', 'https://', $url);
+		return str_ireplace('http://', 'https://', $url);
 	}
 
 	/**

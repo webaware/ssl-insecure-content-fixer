@@ -7,7 +7,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.0.1
 Tested up to: 3.4.2
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ Post about it to [the support forum](http://wordpress.org/support/plugin/ssl-ins
 Great! Tell me which plugin is yours, and how to check for your new version, and I'll drop the "fix" from my next release.
 
 == Changelog ==
+
+= 1.5.0 [2012-11-09] =
+* added: handle properly enqueued admin stylesheets for admin over SSL
 
 = 1.4.1 [2012-09-21] =
 * fixed: handle uppercase links properly (i.e. HTTP://)

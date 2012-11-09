@@ -3,7 +3,7 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: Fix some common problems with insecure content on pages using SSL
-Version: 1.4.1
+Version: 1.5.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
@@ -21,9 +21,12 @@ class SSLInsecureContentFixer {
 	public static function run() {
 		add_filter('plugin_row_meta', array(__CLASS__, 'addPluginDetailsLinks'), 10, 2);
 
-		if (is_ssl() && !is_admin()) {
+		if (is_ssl()) {
 			add_action('wp_print_scripts', array(__CLASS__, 'scriptsFix'), 100);
 			add_action('wp_print_styles', array(__CLASS__, 'stylesFix'), 100);
+
+			// handle admin styles; must run before print_admin_styles() is called
+			add_action('admin_print_styles', array(__CLASS__, 'stylesFix'), 19);
 
 			// filter Image Widget image links
 			add_filter('image_widget_image_url', array(__CLASS__, 'filterImageWidgetURL'));
@@ -34,9 +37,8 @@ class SSLInsecureContentFixer {
 	* action hook for adding plugin details links
 	*/
 	public static function addPluginDetailsLinks($links, $file) {
-		// add settings link
 		if ($file == SSLFIX_PLUGIN_NAME) {
-			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Support') . '</a>';
+			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Get Help') . '</a>';
 			$links[] = '<a href="http://wordpress.org/extend/plugins/ssl-insecure-content-fixer/">' . __('Rating') . '</a>';
 			$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=FNFKTWZPRJDQE">' . __('Donate') . '</a>';
 		}

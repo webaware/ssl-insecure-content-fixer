@@ -3,7 +3,7 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: Fix some common problems with insecure content on pages using SSL
-Version: 1.5.0
+Version: 1.6.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
@@ -28,6 +28,9 @@ class SSLInsecureContentFixer {
 			// handle admin styles; must run before print_admin_styles() is called
 			add_action('admin_print_styles', array(__CLASS__, 'stylesFix'), 19);
 
+			// filter image links e.g. in calls to wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
+			add_filter('wp_get_attachment_url', array(__CLASS__, 'filterGetAttachUrl'), 100);
+
 			// filter Image Widget image links
 			add_filter('image_widget_image_url', array(__CLASS__, 'filterImageWidgetURL'));
 		}
@@ -38,7 +41,7 @@ class SSLInsecureContentFixer {
 	*/
 	public static function addPluginDetailsLinks($links, $file) {
 		if ($file == SSLFIX_PLUGIN_NAME) {
-			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Get Help') . '</a>';
+			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Get help') . '</a>';
 			$links[] = '<a href="http://wordpress.org/extend/plugins/ssl-insecure-content-fixer/">' . __('Rating') . '</a>';
 			$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=FNFKTWZPRJDQE">' . __('Donate') . '</a>';
 		}
@@ -82,7 +85,22 @@ class SSLInsecureContentFixer {
 	}
 
 	/**
+	* filter attachment links to load over SSL if page is SSL
+	* @param string $url the URL to the attachment
+	* @return string
+	*/
+	public static function filterGetAttachUrl($url) {
+		// only fix if source URL starts with http://
+		if (stripos($url, 'http://') === 0) {
+			$url = self::fixURL($url);
+		}
+
+		return $url;
+	}
+
+	/**
 	* filter Image Widget image links to load over SSL if page is SSL
+	* @param string $imageurl the URL to the widget image
 	* @return string
 	*/
 	public static function filterImageWidgetURL($imageurl) {

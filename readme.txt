@@ -6,8 +6,8 @@ Author URI: http://www.webaware.com.au/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FNFKTWZPRJDQE
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.2.1
-Tested up to: 3.4.2
-Stable tag: 1.5.0
+Tested up to: 3.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ It is very lightweight, so it doesn't impact on performance, but that also means
 
 * scripts that are registered using wp_register_script or wp_enqueue_script
 * stylesheets that are registered using wp_register_style or wp_enqueue_style
+* images and other media loaded by calling wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
 * the stylesheet loaded by the [list-category-posts-with-pagination](http://wordpress.org/extend/plugins/list-category-posts-with-pagination) plugin
 * images loaded by [image-widget](http://wordpress.org/extend/plugins/image-widget/) plugin
 
@@ -50,6 +51,9 @@ Post about it to [the support forum](http://wordpress.org/support/plugin/ssl-ins
 Great! Tell me which plugin is yours, and how to check for your new version, and I'll drop the "fix" from my next release.
 
 == Changelog ==
+
+= 1.6.0 [2013-01-05] =
+* added: handle images and other media loaded by calling wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
 
 = 1.5.0 [2012-11-09] =
 * added: handle properly enqueued admin stylesheets for admin over SSL

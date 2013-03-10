@@ -6,7 +6,7 @@ Author URI: http://www.webaware.com.au/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FNFKTWZPRJDQE
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.2.1
-Tested up to: 3.5.0
+Tested up to: 3.5.1
 Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -41,6 +41,18 @@ If your browser still reports insecure content, tell me the URL of the problem p
 = I get "insecure content" warnings from some of my content =
 
 You are probably loading content with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `//www.example.com/`; your browser should load the content, but will use SSL when your page uses it.
+
+= My website is behind a load balancer or reverse proxy =
+
+If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when SSL is being used, this plugin won't help. See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](http://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details. You might be able to fix it by adding this to your wp-config.php file:
+
+`
+// Amazon AWS Elastic Load Balancer and some others
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+    $_SERVER['HTTPS']='on';
+`
+
+For websites hosted by Network Solutions, try downloading [this gist](https://gist.github.com/webaware/4688802) and saving it into your plugins folder, then enable the plugin "Force SSL URL Scheme".
 
 = I still get "insecure content" warnings on my secure page =
 

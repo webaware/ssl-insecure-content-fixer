@@ -3,7 +3,7 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: Fix some common problems with insecure content on pages using SSL
-Version: 1.7.0
+Version: 1.7.1
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */

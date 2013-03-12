@@ -7,7 +7,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.2.1
 Tested up to: 3.5.1
-Stable tag: 1.7.0
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,9 @@ Post about it to [the support forum](http://wordpress.org/support/plugin/ssl-ins
 Great! Tell me which plugin is yours, and how to check for your new version, and I'll drop the "fix" from my next release.
 
 == Changelog ==
+
+= 1.7.1 [2013-03-13] =
+* fixed: is_ssl() test checks to ensure test page was actually loaded via SSL
 
 = 1.7.0 [2013-03-13] =
 * added: simple test to see whether [is_ssl()](http://codex.wordpress.org/Function_Reference/is_ssl) is working, and try to diagnose when it isn't

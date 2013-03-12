@@ -45,6 +45,19 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 		<?php endif; ?>
 	<?php endif; ?>
 
+<script>
+if (document.location.protocol != "https:") {
+	var msg = "\
+This page wasn't loaded via SSL (HTTPS).\n\
+Attempt to reload with SSL?\n\
+(if this message shows again, something is forcing your browser to load the page via HTTP)\
+";
+	if (confirm(msg)) {
+	    document.location = document.URL.replace(/^http:/i, "https:");
+	}
+}
+</script>
+
 </body>
 
 </html>

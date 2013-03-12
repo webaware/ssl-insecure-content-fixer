@@ -3,7 +3,7 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: Fix some common problems with insecure content on pages using SSL
-Version: 1.6.0
+Version: 1.7.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
 */
@@ -20,6 +20,7 @@ class SSLInsecureContentFixer {
 	*/
 	public static function run() {
 		add_filter('plugin_row_meta', array(__CLASS__, 'addPluginDetailsLinks'), 10, 2);
+		add_action('admin_menu', array(__CLASS__, 'addAdminMenu'));
 
 		if (is_ssl()) {
 			add_action('wp_print_scripts', array(__CLASS__, 'scriptsFix'), 100);
@@ -41,12 +42,35 @@ class SSLInsecureContentFixer {
 	*/
 	public static function addPluginDetailsLinks($links, $file) {
 		if ($file == SSLFIX_PLUGIN_NAME) {
+			$testURL = self::fixURL(plugins_url('is_ssl-test.php', __FILE__));
+			$links[] = '<a href="' . $testURL . '" target="_blank">test is_ssl()</a>';
 			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Get help') . '</a>';
 			$links[] = '<a href="http://wordpress.org/extend/plugins/ssl-insecure-content-fixer/">' . __('Rating') . '</a>';
 			$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=FNFKTWZPRJDQE">' . __('Donate') . '</a>';
 		}
 
 		return $links;
+	}
+
+	/**
+	* action hook for building admin menu
+	*/
+	public function addAdminMenu() {
+		// register the instructions page, only linked from plugin page
+		global $_registered_pages;
+
+		$hookname = get_plugin_page_hookname('is_ssl-test', '');
+		if (!empty($hookname)) {
+			add_action($hookname, array(__CLASS__, 'is_sslTest'));
+			$_registered_pages[$hookname] = true;
+		}
+	}
+
+	/**
+	* check that SSL can be detected, try to diagnose why it can't
+	*/
+	public static function is_sslTest() {
+		include SSLFIX_PLUGIN_ROOT . 'is_ssl-test.php';
 	}
 
 	/**

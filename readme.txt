@@ -7,7 +7,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: ssl, https, insecure content, partially encrypted
 Requires at least: 3.2.1
 Tested up to: 3.5.1
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,7 @@ You are probably loading content with a URL that starts with "http:". Take that 
 If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when SSL is being used, this plugin won't help. See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](http://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details. You might be able to fix it by adding this to your wp-config.php file:
 
 `
-// Amazon AWS Elastic Load Balancer and some others
+// Amazon AWS Elastic Load Balancer, CloudFlare, and some others
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
     $_SERVER['HTTPS']='on';
 `
@@ -63,6 +63,9 @@ Post about it to [the support forum](http://wordpress.org/support/plugin/ssl-ins
 Great! Tell me which plugin is yours, and how to check for your new version, and I'll drop the "fix" from my next release.
 
 == Changelog ==
+
+= 1.7.0 [2013-03-13] =
+* added: simple test to see whether [is_ssl()](http://codex.wordpress.org/Function_Reference/is_ssl) is working, and try to diagnose when it isn't
 
 = 1.6.0 [2013-01-05] =
 * added: handle images and other media loaded by calling wp_get_attachment_image(), wp_get_attachment_image_src(), etc.

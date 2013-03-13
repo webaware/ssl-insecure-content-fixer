@@ -34,7 +34,7 @@ I'll be adding other fixes as I become aware of other problems that can be easil
 1. Upload this plugin to your /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-If your browser still reports insecure content, tell me the URL of the problem page in [the support forum](http://wordpress.org/support/plugin/ssl-insecure-content-fixer).
+If your browser still reports insecure content, have a read of the [FAQ](http://wordpress.org/extend/plugins/ssl-insecure-content-fixer/faq/). If that doesn't help, tell me the URL of the problem page in [the support forum](http://wordpress.org/support/plugin/ssl-insecure-content-fixer).
 
 == Frequently Asked Questions ==
 
@@ -44,7 +44,7 @@ You are probably loading content with a URL that starts with "http:". Take that 
 
 = My website is behind a load balancer or reverse proxy =
 
-If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when SSL is being used, this plugin won't help. See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](http://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details. You might be able to fix it by adding this to your wp-config.php file:
+If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when SSL is being used, this plugin won't help. See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](http://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details. This plugin has a link to test whether is_ssl() is working, which you can find on the plugins page in your WordPress admin. You might be able to fix it by adding this to your wp-config.php file:
 
 `
 // Amazon AWS Elastic Load Balancer, CloudFlare, and some others

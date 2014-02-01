@@ -3,9 +3,26 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: http://snippets.webaware.com.au/wordpress-plugins/ssl-insecure-content-fixer/
 Description: Fix some common problems with insecure content on pages using SSL
-Version: 1.7.1
+Version: 1.8.0
 Author: WebAware
 Author URI: http://www.webaware.com.au/
+*/
+
+/*
+copyright (c) 2012-2014 WebAware Pty Ltd (email : rmckay@webaware.com.au)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 if (!defined('SSLFIX_PLUGIN_ROOT')) {
@@ -19,87 +36,65 @@ class SSLInsecureContentFixer {
 	* hook WordPress to handle script and style fixes
 	*/
 	public static function run() {
-		add_filter('plugin_row_meta', array(__CLASS__, 'addPluginDetailsLinks'), 10, 2);
-		add_action('admin_menu', array(__CLASS__, 'addAdminMenu'));
+		add_filter('plugin_row_meta', array(__CLASS__, 'pluginDetailsLinks'), 10, 2);
+		add_action('admin_menu', array(__CLASS__, 'adminMenu'));
 
 		if (is_ssl()) {
-			add_action('wp_print_scripts', array(__CLASS__, 'scriptsFix'), 100);
+			// filter script and stylesheet links
+			add_filter('script_loader_src', array(__CLASS__, 'fixURL'));
+			add_filter('style_loader_src', array(__CLASS__, 'fixURL'));
+
+			// filter uploads dir so that plugins using it to determine upload URL also work
+			add_filter('upload_dir', array(__CLASS__, 'uploadDir'));
+
+			// filter image links on front end e.g. in calls to wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
+			if (!is_admin()) {
+				add_filter('wp_get_attachment_url', array(__CLASS__, 'fixURL'), 100);
+			}
+
+			// filter plugin Image Widget old-style image links
+			add_filter('image_widget_image_url', array(__CLASS__, 'fixURL'));
+
+			// handle some specific plugins
 			add_action('wp_print_styles', array(__CLASS__, 'stylesFix'), 100);
-
-			// handle admin styles; must run before print_admin_styles() is called
-			add_action('admin_print_styles', array(__CLASS__, 'stylesFix'), 19);
-
-			// filter image links e.g. in calls to wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
-			add_filter('wp_get_attachment_url', array(__CLASS__, 'filterGetAttachUrl'), 100);
-
-			// filter Image Widget image links
-			add_filter('image_widget_image_url', array(__CLASS__, 'filterImageWidgetURL'));
 		}
 	}
 
 	/**
-	* action hook for adding plugin details links
+	* add plugin details links on plugins page
 	*/
-	public static function addPluginDetailsLinks($links, $file) {
+	public static function pluginDetailsLinks($links, $file) {
 		if ($file == SSLFIX_PLUGIN_NAME) {
 			$testURL = self::fixURL(plugins_url('is_ssl-test.php', __FILE__));
-			$links[] = '<a href="' . $testURL . '" target="_blank">test is_ssl()</a>';
-			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Get help') . '</a>';
-			$links[] = '<a href="http://wordpress.org/extend/plugins/ssl-insecure-content-fixer/">' . __('Rating') . '</a>';
-			$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=FNFKTWZPRJDQE">' . __('Donate') . '</a>';
+			$links[] = sprintf('<a href="%s" target="_blank">%s</a>', $testURL, __('Test is_ssl()', 'ssl-insecure-content-fixer'));
+			$links[] = '<a href="http://wordpress.org/support/plugin/ssl-insecure-content-fixer">' . __('Get help', 'ssl-insecure-content-fixer') . '</a>';
+			$links[] = '<a href="http://wordpress.org/plugins/ssl-insecure-content-fixer/">' . __('Rating', 'ssl-insecure-content-fixer') . '</a>';
+			$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=FNFKTWZPRJDQE">' . __('Donate', 'ssl-insecure-content-fixer') . '</a>';
 		}
 
 		return $links;
 	}
 
 	/**
-	* action hook for building admin menu
+	* add our admin menu items
 	*/
-	public function addAdminMenu() {
-		// register the instructions page, only linked from plugin page
-		global $_registered_pages;
-
-		$hookname = get_plugin_page_hookname('is_ssl-test', '');
-		if (!empty($hookname)) {
-			add_action($hookname, array(__CLASS__, 'is_sslTest'));
-			$_registered_pages[$hookname] = true;
+	public static function adminMenu() {
+		// add external link to Tools area
+		global $submenu;
+		if (current_user_can('manage_options')) {
+			$testURL = self::fixURL(plugins_url('is_ssl-test.php', __FILE__));
+			$submenu['tools.php'][] = array(
+				__('Test is_ssl()', 'ssl-insecure-content-fixer'),		// label
+				'manage_options',										// permissions
+				$testURL,												// URL
+			);
 		}
 	}
 
 	/**
-	* check that SSL can be detected, try to diagnose why it can't
-	*/
-	public static function is_sslTest() {
-		include SSLFIX_PLUGIN_ROOT . 'is_ssl-test.php';
-	}
-
-	/**
-	* force plugins to load scripts with SSL if page is SSL
-	*/
-	public static function scriptsFix() {
-		global $wp_scripts;
-
-		// search the registered scripts for any that will load as insecure content
-		foreach ((array) $wp_scripts->registered as $script) {
-			// only fix if source URL starts with http://
-			if (stripos(ltrim($script->src), 'http://') === 0)
-				$script->src = self::fixURL($script->src);
-		}
-	}
-
-	/**
-	* force plugins to load styles with SSL if page is SSL
+	* force specific plugins to load styles with SSL
 	*/
 	public static function stylesFix() {
-		global $wp_styles;
-
-		// search the registered stylesheets for any that will load as insecure content
-		foreach ((array) $wp_styles->registered as $style) {
-			// only fix if source URL starts with http://
-			if (stripos(ltrim($style->src), 'http://') === 0)
-				$style->src = self::fixURL($style->src);
-		}
-
 		// force list-category-posts-with-pagination plugin to load its CSS with SSL (it doesn't use wp_enqueue_style)
 		if (function_exists('admin_register_head') && is_dir(WP_PLUGIN_DIR . '/list-category-posts-with-pagination')) {
 			remove_action('wp_head', 'admin_register_head');
@@ -109,64 +104,31 @@ class SSLInsecureContentFixer {
 	}
 
 	/**
-	* filter attachment links to load over SSL if page is SSL
-	* @param string $url the URL to the attachment
+	* replace http: URL with https: URL
+	* @param string $url
 	* @return string
 	*/
-	public static function filterGetAttachUrl($url) {
+	public static function fixURL($url) {
 		// only fix if source URL starts with http://
 		if (stripos($url, 'http://') === 0) {
-			$url = self::fixURL($url);
+			$url = 'https' . substr($url, 4);
 		}
 
 		return $url;
 	}
 
 	/**
-	* filter Image Widget image links to load over SSL if page is SSL
-	* @param string $imageurl the URL to the widget image
-	* @return string
+	* filter uploads dir so that plugins using it to determine upload URL also work
+	* @param array $uploads
+	* @return array
 	*/
-	public static function filterImageWidgetURL($imageurl) {
-		// only fix if source URL starts with http://
-		if (stripos(ltrim($imageurl), 'http://') === 0) {
-			$imageurl = self::fixURL($imageurl);
-		}
+	public static function uploadDir($uploads) {
+		$uploads['url'] = self::fixURL($uploads['url']);
+		$uploads['baseurl'] = self::fixURL($uploads['baseurl']);
 
-		return $imageurl;
+		return $uploads;
 	}
 
-	/**
-	* replace URL with one that uses SSL
-	* @param string $url
-	* @return string
-	*/
-	private static function fixURL($url) {
-		return str_ireplace('http://', 'https://', $url);
-	}
-
-	/**
-	* remove filters that are methods of an object of some class
-	* @param string $filterName name of action or filter hook
-	* @param string $className name of class for object method
-	*/
-	private static function removeObjectFilters($filterName, $className) {
-		global $wp_filter;
-
-		// must take a variable to iterate over array of filters,
-		// else a subtle reference bug messes up the original array!
-		$filters = $wp_filter[$filterName];
-
-		foreach ($filters as $priority => $hooks) {
-			foreach ($hooks as $idx => $filter) {
-				// check for function being a method on a $className object
-				if (is_array($filter['function']) && is_a($filter['function'][0], $className)) {
-					remove_filter($filterName, $idx, $priority);
-					break;
-				}
-			}
-		}
-	}
 }
 
 SSLInsecureContentFixer::run();

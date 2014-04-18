@@ -6,7 +6,7 @@ Author URI: http://www.webaware.com.au/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FNFKTWZPRJDQE
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 3.2.1
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: 1.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -21,9 +21,9 @@ It is very lightweight, so it doesn't impact on performance, but that also means
 
 **Current fixes:**
 
-* scripts that are registered using wp_register_script or wp_enqueue_script
-* stylesheets that are registered using wp_register_style or wp_enqueue_style
-* images and other media loaded by calling wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
+* scripts that are registered using `wp_register_script()` or `wp_enqueue_script()`
+* stylesheets that are registered using `wp_register_style()` or `wp_enqueue_style()`
+* images and other media loaded by calling `wp_get_attachment_image()`, `wp_get_attachment_image_src()`, etc.
 * data returned from `wp_upload_dir()` (e.g. for some CAPTCHA images)
 * the stylesheet loaded by the [list-category-posts-with-pagination](http://wordpress.org/plugins/list-category-posts-with-pagination) plugin
 * images loaded by the [image-widget](http://wordpress.org/plugins/image-widget/) plugin
@@ -44,15 +44,15 @@ If your browser still reports insecure/mixed content, have a read of the [FAQ](h
 Look in your web browser's error console.
 
 * Google Chrome has a [JavaScript Console](https://developers.google.com/chrome-developer-tools/docs/console) in its developer tools
-* FireFox has the [Web Console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console)
+* FireFox has the [Web Console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) or [Firebug](http://getfirebug.com/)
 * Internet Explorer has the [F12 Tools Console](http://msdn.microsoft.com/en-us/library/ie/gg589500%28v=vs.85%29.aspx)
-* Safari has the [Error Console](http://developer.apple.com/library/safari/#documentation/AppleApplications/Conceptual/Safari_Developer_Guide/PrototypingYourWebsite/PrototypingYourWebsite.html#//apple_ref/doc/uid/TP40007874-CH7-SW2)
+* Safari has the [Error Console](https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html)
 
 NB: after you open your browser's console, refresh your page so that it tries to load the insecure content again and logs warnings to the error console.
 
 = I get "insecure content" warnings from some of my content =
 
-You are probably loading content (such as images) with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `//www.example.com/`; your browser should load the content, but will use SSL when your page uses it.
+You are probably loading content (such as images) with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `//www.example.com/image.png`; your browser will load the content, using SSL when your page uses it.
 
 = My website is behind a load balancer or reverse proxy =
 
@@ -80,10 +80,10 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 = 1.8.0 [2014-02-02] =
 * changed: use script/style source filters instead of iterating over script/style dependency objects
-* changed: only handle links for wp_get_attachment_image(), wp_get_attachment_image_src(), etc. on front end (i.e. not in admin)
+* changed: only handle links for `wp_get_attachment_image()`, `wp_get_attachment_image_src()`, etc. on front end (i.e. not in admin)
 * changed: refactor for code simplification
 * added: fix data returned from `wp_upload_dir()` (fixes Contact Form 7 CAPTCHA images)
-* added: Tools menu link to is_ssl() test
+* added: Tools menu link to `is_ssl()` test
 
 = 1.7.1 [2013-03-13] =
 * fixed: is_ssl() test checks to ensure test page was actually loaded via SSL
@@ -92,7 +92,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 * added: simple test to see whether [is_ssl()](http://codex.wordpress.org/Function_Reference/is_ssl) is working, and try to diagnose when it isn't
 
 = 1.6.0 [2013-01-05] =
-* added: handle images and other media loaded by calling wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
+* added: handle images and other media loaded by calling `wp_get_attachment_image()`, `wp_get_attachment_image_src()`, etc.
 
 = 1.5.0 [2012-11-09] =
 * added: handle properly enqueued admin stylesheets for admin over SSL

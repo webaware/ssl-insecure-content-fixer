@@ -1,0 +1,16 @@
+{
+	"es3": true,
+	"immed": true,
+	"latedef": "nofunc",
+	"nonew": true,
+	"undef": true,
+	"unused": true,
+
+	// globals
+	"browser": true,
+	"jquery": true,
+	"globals": {
+		"sslfix": false,
+		"module": false
+	}
+}

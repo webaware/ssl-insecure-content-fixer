@@ -1,0 +1,19 @@
+{
+  "name": "ssl-insecure-content-fixer",
+  "version": "2.0.0",
+  "description": "Clean up WordPress website HTTPS insecure content",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-pot": "^0.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webaware/ssl-insecure-content-fixer.git"
+  },
+  "author": "WebAware http://webaware.com.au/",
+  "license": "GPLv2 or later",
+  "homepage": "https://ssl.webaware.net.au/"
+}

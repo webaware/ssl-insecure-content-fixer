@@ -23,6 +23,10 @@ WordPress Multisite gets a network settings page. This can be used to set defaul
 
 See the [SSL Insecure Content Fixer website](https://ssl.webaware.net.au/) for more details.
 
+= Translations =
+
+If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer).
+
 == Installation ==
 
 1. Either install automatically through the WordPress admin, or download the .zip file, unzip to a folder, and upload the folder to your /wp-content/plugins/ directory. Read [Installing Plugins](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins) in the WordPress Codex for details.
@@ -64,6 +68,11 @@ Post about it to [the support forum](https://wordpress.org/support/plugin/ssl-in
 = You listed my plugin, but I've fixed it =
 
 Great! Tell me which plugin is yours and how to check for your new version, and I'll drop the "fix" from my next release.
+
+== Contributions ==
+
+* [Translate into your preferred language](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer)
+* [Fork me on GitHub](https://github.com/webaware/ssl-insecure-content-fixer)
 
 == Changelog ==
 

@@ -8,4 +8,5 @@ Fix some common problems with insecure content on pages using SSL
 * [Download](http://wordpress.org/plugins/ssl-insecure-content-fixer/)
 * [Documentation](https://ssl.webaware.net.au/)
 * [Support](http://wordpress.org/support/plugin/ssl-insecure-content-fixer)
+* [Translate](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer)
 * [Donate](https://ssl.webaware.net.au/)

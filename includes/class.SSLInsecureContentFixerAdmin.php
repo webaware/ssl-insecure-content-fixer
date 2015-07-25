@@ -52,11 +52,11 @@ class SSLInsecureContentFixerAdmin {
 				$links[] = sprintf('<a href="%s">%s</a>', esc_url($url), _x('SSL Tests', 'menu link', 'ssl-insecure-content-fixer'));
 			}
 
-			$links[] = sprintf('<a href="https://ssl.webaware.net.au/">%s</a>', _x('Instructions', 'plugin details links', 'ssl-insecure-content-fixer'));
-			$links[] = sprintf('<a href="https://wordpress.org/support/plugin/ssl-insecure-content-fixer">%s</a>', _x('Get help', 'plugin details links', 'ssl-insecure-content-fixer'));
-			$links[] = sprintf('<a href="https://wordpress.org/plugins/ssl-insecure-content-fixer/">%s</a>', _x('Rating', 'plugin details links', 'ssl-insecure-content-fixer'));
-			$links[] = sprintf('<a href="https://translate.webaware.com.au/projects/ssl-insecure-content-fixer">%s</a>', _x('Translate', 'plugin details links', 'ssl-insecure-content-fixer'));
-			$links[] = sprintf('<a href="http://shop.webaware.com.au/downloads/ssl-insecure-content-fixer/">%s</a>', _x('Donate', 'plugin details links', 'ssl-insecure-content-fixer'));
+			$links[] = sprintf('<a href="https://ssl.webaware.net.au/" target="_blank">%s</a>', _x('Instructions', 'plugin details links', 'ssl-insecure-content-fixer'));
+			$links[] = sprintf('<a href="https://wordpress.org/support/plugin/ssl-insecure-content-fixer" target="_blank">%s</a>', _x('Get help', 'plugin details links', 'ssl-insecure-content-fixer'));
+			$links[] = sprintf('<a href="https://wordpress.org/plugins/ssl-insecure-content-fixer/" target="_blank">%s</a>', _x('Rating', 'plugin details links', 'ssl-insecure-content-fixer'));
+			$links[] = sprintf('<a href="https://translate.webaware.com.au/projects/ssl-insecure-content-fixer" target="_blank">%s</a>', _x('Translate', 'plugin details links', 'ssl-insecure-content-fixer'));
+			$links[] = sprintf('<a href="http://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer" target="_blank">%s</a>', _x('Donate', 'plugin details links', 'ssl-insecure-content-fixer'));
 		}
 
 		return $links;

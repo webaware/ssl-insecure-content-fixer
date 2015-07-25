@@ -3,7 +3,7 @@ Contributors: webaware
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: https://ssl.webaware.net.au/
 Author URI: http://webaware.com.au/
-Donate link: https://ssl.webaware.net.au/
+Donate link: http://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 3.2.1
 Tested up to: 4.3
@@ -51,11 +51,11 @@ NB: after you open your browser's console, refresh your page so that it tries to
 
 = I get "insecure content" warnings from some of my content =
 
-You are probably loading content (such as images) with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `//www.example.com/image.png`; your browser will load the content, using SSL when your page uses it.
+You are probably loading content (such as images) with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `//www.example.com/image.png`; your browser will load the content, using HTTPS when your page uses it.
 
 = My website is behind a load balancer or reverse proxy =
 
-If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when SSL is being used, you will need to select the appropriate [HTTPS detection settings](https://ssl.webaware.net.au/https-detection/). See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](http://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details.
+If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when HTTPS is being used, you will need to select the appropriate [HTTPS detection settings](https://ssl.webaware.net.au/https-detection/). See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](http://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details.
 
 = I get warnings about basic WordPress scripts like jquery.js =
 
@@ -76,7 +76,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Changelog ==
 
-= 2.0.0, soon... =
+= 2.0.0, 2015-07-26 =
 
 * changed: handle media loaded by calling `wp_get_attachment_image()`, `wp_get_attachment_image_src()`, etc. via AJAX
 * changed: in multisite, test tools (and settings) are only available to super admins
@@ -95,7 +95,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 = 1.7.1, 2013-03-13 =
 
-* fixed: is_ssl() test checks to ensure test page was actually loaded via SSL
+* fixed: is_ssl() test checks to ensure test page was actually loaded via HTTPS
 
 = 1.7.0, 2013-03-13 =
 
@@ -107,7 +107,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 = 1.5.0, 2012-11-09 =
 
-* added: handle properly enqueued admin stylesheets for admin over SSL
+* added: handle properly enqueued admin stylesheets for admin over HTTPS
 
 = 1.4.1, 2012-09-21 =
 

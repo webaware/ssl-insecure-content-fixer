@@ -42,11 +42,12 @@ https://ssl.webaware.net.au/
 			}
 		}
 		else {
-			$("#sslfix-detect_fail").show().find("pre").text(response.server);
+			$("#sslfix-detect_fail").show();
 		}
 
 		$("#sslfix-test-result-head").show();
 		$("#sslfix-loading").hide();
+		$("#sslfix-environment").show().find("pre").text(response.server);
 	}
 
 })(jQuery);

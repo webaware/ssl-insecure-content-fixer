@@ -5,8 +5,8 @@
 <div class="wrap">
 
 	<h2><?php
-		/* translators: heading for Multisite network admin settings */
-		esc_html_e('SSL Insecure Content Fixer network settings', 'ssl-insecure-content-fixer');
+		/* translators: heading for multisite network admin settings */
+		esc_html_e('SSL Insecure Content Fixer multisite network settings', 'ssl-insecure-content-fixer');
 	?></h2>
 
 	<p><?php esc_html_e('These settings affect all sites on this network that have not been set individually.', 'ssl-insecure-content-fixer'); ?></p>

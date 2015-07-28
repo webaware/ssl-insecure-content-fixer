@@ -115,7 +115,7 @@ class SSLInsecureContentFixerAdmin {
 
 				if (!$this->has_settings_errors) {
 					update_site_option(SSLFIX_PLUGIN_OPTIONS, $options);
-					add_settings_error(SSLFIX_PLUGIN_OPTIONS, 'sslfix-network-updated', __('Network settings updated.', 'ssl-insecure-content-fixer'), 'updated');
+					add_settings_error(SSLFIX_PLUGIN_OPTIONS, 'sslfix-network-updated', __('Multisite network settings updated.', 'ssl-insecure-content-fixer'), 'updated');
 				}
 			}
 

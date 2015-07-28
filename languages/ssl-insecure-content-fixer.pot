@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ssl-insecure-content-fixer\n"
 "Report-Msgid-Bugs-To: translate@webaware.com.au\n"
-"POT-Creation-Date: 2015-07-28 20:56+1000\n"
-"PO-Revision-Date: 2015-07-28 20:56+1000\n"
+"POT-Creation-Date: 2015-07-28 22:47+1000\n"
+"PO-Revision-Date: 2015-07-28 22:47+1000\n"
 "Last-Translator: Ross McKay <rmckay@webaware.com.au>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -59,7 +59,7 @@ msgid "SSL Insecure Content"
 msgstr ""
 
 #: includes/class.SSLInsecureContentFixerAdmin.php:118
-msgid "Network settings updated."
+msgid "Multisite network settings updated."
 msgstr ""
 
 #: includes/class.SSLInsecureContentFixerAdmin.php:140
@@ -243,9 +243,9 @@ msgctxt "proxy settings"
 msgid "unable to detect HTTPS"
 msgstr ""
 
-#. translators: heading for Multisite network admin settings
+#. translators: heading for multisite network admin settings
 #: views/settings-form-network.php:9
-msgid "SSL Insecure Content Fixer network settings"
+msgid "SSL Insecure Content Fixer multisite network settings"
 msgstr ""
 
 #: views/settings-form-network.php:12

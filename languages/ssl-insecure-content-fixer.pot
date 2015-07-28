@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ssl-insecure-content-fixer\n"
 "Report-Msgid-Bugs-To: translate@webaware.com.au\n"
-"POT-Creation-Date: 2015-07-25 23:48+1000\n"
-"PO-Revision-Date: 2015-07-25 23:48+1000\n"
+"POT-Creation-Date: 2015-07-28 20:56+1000\n"
+"PO-Revision-Date: 2015-07-28 20:56+1000\n"
 "Last-Translator: Ross McKay <rmckay@webaware.com.au>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -266,6 +266,10 @@ msgstr ""
 msgid "This page checks to see whether WordPress can detect HTTPS."
 msgstr ""
 
+#: views/ssl-tests.php:20
+msgid "Running tests..."
+msgstr ""
+
 #: views/ssl-tests.php:25
 msgid "Tests completed."
 msgstr ""
@@ -305,6 +309,6 @@ msgid ""
 "target=\"_blank\">tell me about it</a>."
 msgstr ""
 
-#: views/ssl-tests.php:47
+#: views/ssl-tests.php:49
 msgid "Your server environment shows this:"
 msgstr ""

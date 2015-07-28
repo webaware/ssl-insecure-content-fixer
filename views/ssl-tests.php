@@ -17,7 +17,7 @@
 	<p><?php esc_html_e('This page checks to see whether WordPress can detect HTTPS.', 'ssl-insecure-content-fixer'); ?></p>
 
 	<div id="sslfix-loading">
-		<p>Running tests...
+		<p><?php esc_html_e('Running tests...', 'ssl-insecure-content-fixer'); ?>
 		<img src="<?php echo esc_url(plugins_url('images/ajax-loader.gif', SSLFIX_PLUGIN_FILE)); ?>" />
 		</p>
 	</div>

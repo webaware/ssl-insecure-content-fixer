@@ -27,7 +27,7 @@ See the [SSL Insecure Content Fixer website](https://ssl.webaware.net.au/) for m
 
 Many thanks to the generous efforts of our translators:
 
-* Bulgarian (bg_BG) -- [Ivan Arnaudov](Ivan Arnaudov)
+* Bulgarian (bg_BG) -- [Ivan Arnaudov](http://templateinspector.com/)
 
 If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer).
 
@@ -83,7 +83,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 = 2.1.0, soon... =
 
 * changed: always show server environment on test results
-* added: Bulgarian translation (thanks, [Ivan Arnaudov](Ivan Arnaudov)!)
+* added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
 
 = 2.0.0, 2015-07-26 =
 

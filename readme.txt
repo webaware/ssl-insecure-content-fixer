@@ -84,6 +84,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 * changed: always show server environment on test results
 * added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
+* added: .htaccess file for AJAX SSL Tests, fixes conflict with some security plugins
 
 = 2.0.0, 2015-07-26 =
 

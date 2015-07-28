@@ -1,0 +1,6 @@
+Options -Indexes
+Allow from all
+
+<Files *.php>
+Allow from all
+</Files>

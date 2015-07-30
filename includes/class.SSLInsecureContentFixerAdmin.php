@@ -12,6 +12,7 @@ class SSLInsecureContentFixerAdmin {
 	*/
 	public function __construct() {
 		add_action('admin_init', array($this, 'adminInit'));
+		add_action('load-tools_page_ssl-insecure-content-fixer-tests', array($this, 'loadSslTests'));
 		add_action('admin_print_styles-settings_page_ssl-insecure-content-fixer', array($this, 'printStylesSettings'));
 		add_action('admin_menu', array($this, 'adminMenu'));
 		add_action('network_admin_menu', array($this, 'adminMenuNetwork'));
@@ -171,6 +172,25 @@ class SSLInsecureContentFixerAdmin {
 		}
 
 		return $output;
+	}
+
+	/**
+	* set a cookie functioning like a nonce for the non-WP AJAX script
+	*/
+	public function loadSslTests() {
+		$plugin_path = plugin_dir_path(SSLFIX_PLUGIN_FILE);
+		$cookie_path = '/';
+
+		// some system data to salt with
+		$data = sprintf("%s\n%s\n%s\n%s", php_uname(), php_ini_loaded_file(), php_ini_scanned_files(), implode("\n", get_loaded_extensions()));
+
+		// synthesise a temporary cookie using server name, file path, time, and system data
+		// NB: only needs to be as complex/secure as the data that could be exposed, i.e. the contents of $_SERVER and script paths
+		$tick = ceil(time() / 120);
+		$cookie_name = 'sslfix_' . md5(sprintf('%s|%s|%s', $_SERVER['SERVER_NAME'], $plugin_path, $tick));
+		$cookie_value = md5($data);
+
+		setcookie($cookie_name, $cookie_value, time() + 30, $cookie_path);
 	}
 
 	/**

@@ -1,6 +1,30 @@
 <?php
 
 /**
+* test for cookie, must have expected name and value
+*/
+$plugin_path = dirname(dirname(__FILE__)) . '/';
+
+// some system data to salt with
+$data = sprintf("%s\n%s\n%s\n%s", php_uname(), php_ini_loaded_file(), php_ini_scanned_files(), implode("\n", get_loaded_extensions()));
+
+// synthesise a temporary cookie name using server name, file path, and time
+// NB: only needs to be as complex/secure as the data that could be exposed, i.e. the contents of $_SERVER and script paths
+$tick = ceil(time() / 120);
+$cookie_name = 'sslfix_' . md5(sprintf('%s|%s|%s', $_SERVER['SERVER_NAME'], $plugin_path, $tick));
+$cookie_value = md5($data);
+
+if (!isset($_COOKIE[$cookie_name])) {
+	echo 'missing nonce.';
+	exit(403);
+}
+
+if ($_COOKIE[$cookie_name] !== $cookie_value) {
+	echo 'bad nonce value.';
+	exit(403);
+}
+
+/**
 * run some AJAX functions outside of WordPress, so that we can see the raw environment
 */
 
@@ -122,7 +146,7 @@ function sslfix_environment() {
 	// build server environment to return, without blacklisted keys
 	$env = array_diff_key($_SERVER, $env_blacklist);
 
-	$response['server'] = print_r($env, 1);
+	$response['env'] = print_r($env, 1);
 
 	sslfix_send_json($response);
 }
@@ -173,7 +197,8 @@ function sslfix_send_json($response) {
 	@header('Cache-Control: no-cache, must-revalidate, max-age=0');
 	@header('Pragma: no-cache');
 
-	// add CORS header so that browsers permit JSON response
+	// add CORS headers so that browsers permit JSON response
+	@header('Access-Control-Allow-Credentials: true');
 	if (isset($_SERVER['HTTP_ORIGIN'])) {
 		@header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
 	}

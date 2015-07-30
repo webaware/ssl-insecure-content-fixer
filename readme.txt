@@ -78,10 +78,17 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 * [Translate into your preferred language](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer)
 * [Fork me on GitHub](https://github.com/webaware/ssl-insecure-content-fixer)
 
+== Upgrade Notice ==
+
+= 2.1.0 =
+
+* security fix: restrict access to AJAX test script; don't disclose server environment with system information
+
 == Changelog ==
 
 = 2.1.0, soon... =
 
+* security fix: restrict access to AJAX test script; don't disclose server environment with system information
 * changed: always show server environment on test results
 * added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
 * added: .htaccess file for AJAX SSL Tests, fixes conflict with some security plugins

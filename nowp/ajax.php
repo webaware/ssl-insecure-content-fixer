@@ -64,7 +64,65 @@ function sslfix_get_recommended() {
 */
 function sslfix_environment() {
 	$response = sslfix_get_environment();
-	$response['server'] = print_r($_SERVER, 1);
+
+	// build a list of environment variables to omit, as keys
+	// some are just unnecessary, some might expose sensitive information like script paths
+	$env_blacklist = array_flip(array(
+		'AUTH_TYPE',
+		'CONTENT_LENGTH',
+		'CONTENT_TYPE',
+		'CONTEXT_DOCUMENT_ROOT',
+		'CONTEXT_PREFIX',
+		'DOCUMENT_ROOT',
+		'DOCUMENT_URI',
+		'FCGI_ROLE',
+		'GATEWAY_INTERFACE',
+		'HOME',
+		'HTTP_ACCEPT',
+		'HTTP_ACCEPT_CHARSET',
+		'HTTP_ACCEPT_ENCODING',
+		'HTTP_ACCEPT_LANGUAGE',
+		'HTTP_CONNECTION',
+		'HTTP_COOKIE',
+		'HTTP_HOST',
+		'HTTP_ORIGIN',
+		'HTTP_REFERER',
+		'HTTP_USER_AGENT',
+		'ORIG_PATH_INFO',
+		'PATH',
+		'PATH_INFO',
+		'PATH_TRANSLATED',
+		'PHP_AUTH_DIGEST',
+		'PHP_AUTH_PW',
+		'PHP_AUTH_USER',
+		'PHP_SELF',
+		'QUERY_STRING',
+		'REDIRECT_REMOTE_USER',
+		'REDIRECT_STATUS',
+		'REMOTE_ADDR',
+		'REMOTE_PORT',
+		'REMOTE_USER',
+		'REQUEST_METHOD',
+		'REQUEST_TIME',
+		'REQUEST_TIME_FLOAT',
+		'REQUEST_URI',
+		'SCRIPT_FILENAME',
+		'SCRIPT_NAME',
+		'SERVER_ADDR',
+		'SERVER_ADMIN',
+		'SERVER_NAME',
+		'SERVER_PORT',
+		'SERVER_PROTOCOL',
+		'SERVER_SIGNATURE',
+		'SERVER_SOFTWARE',
+		'UNIQUE_ID',
+		'USER',
+	));
+
+	// build server environment to return, without blacklisted keys
+	$env = array_diff_key($_SERVER, $env_blacklist);
+
+	$response['server'] = print_r($env, 1);
 
 	sslfix_send_json($response);
 }

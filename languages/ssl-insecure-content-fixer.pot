@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ssl-insecure-content-fixer\n"
 "Report-Msgid-Bugs-To: translate@webaware.com.au\n"
-"POT-Creation-Date: 2015-07-28 22:47+1000\n"
-"PO-Revision-Date: 2015-07-28 22:47+1000\n"
+"POT-Creation-Date: 2015-07-30 20:40+1000\n"
+"PO-Revision-Date: 2015-07-30 20:40+1000\n"
 "Last-Translator: Ross McKay <rmckay@webaware.com.au>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -15,64 +15,64 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:47
-#: includes/class.SSLInsecureContentFixerAdmin.php:95
+#: includes/class.SSLInsecureContentFixerAdmin.php:48
+#: includes/class.SSLInsecureContentFixerAdmin.php:96
 msgctxt "plugin details links"
 msgid "Settings"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:52
-#: includes/class.SSLInsecureContentFixerAdmin.php:75
+#: includes/class.SSLInsecureContentFixerAdmin.php:53
+#: includes/class.SSLInsecureContentFixerAdmin.php:76
 msgctxt "menu link"
 msgid "SSL Tests"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:55
+#: includes/class.SSLInsecureContentFixerAdmin.php:56
 msgctxt "plugin details links"
 msgid "Instructions"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:56
+#: includes/class.SSLInsecureContentFixerAdmin.php:57
 msgctxt "plugin details links"
 msgid "Get help"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:57
+#: includes/class.SSLInsecureContentFixerAdmin.php:58
 msgctxt "plugin details links"
 msgid "Rating"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:58
+#: includes/class.SSLInsecureContentFixerAdmin.php:59
 msgctxt "plugin details links"
 msgid "Translate"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:59
+#: includes/class.SSLInsecureContentFixerAdmin.php:60
 msgctxt "plugin details links"
 msgid "Donate"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:71
-#: includes/class.SSLInsecureContentFixerAdmin.php:84
+#: includes/class.SSLInsecureContentFixerAdmin.php:72
+#: includes/class.SSLInsecureContentFixerAdmin.php:85
 msgctxt "menu link"
 msgid "SSL Insecure Content"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:118
+#: includes/class.SSLInsecureContentFixerAdmin.php:119
 msgid "Multisite network settings updated."
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:140
+#: includes/class.SSLInsecureContentFixerAdmin.php:141
 msgctxt "proxy settings"
 msgid "* detected as recommended setting"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:157
+#: includes/class.SSLInsecureContentFixerAdmin.php:158
 msgctxt "settings error"
 msgid "Fix level is invalid"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:162
+#: includes/class.SSLInsecureContentFixerAdmin.php:163
 msgctxt "settings error"
 msgid "HTTPS detection setting is invalid"
 msgstr ""

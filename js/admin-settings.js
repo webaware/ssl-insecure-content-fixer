@@ -11,6 +11,7 @@ https://ssl.webaware.net.au/
 		data:		{ action: "sslfix-get-recommended" },
 		dataType:	"json",
 		method:		"GET",
+		xhrFields:	{ withCredentials: true },
 		success:	showRecommended
 	});
 

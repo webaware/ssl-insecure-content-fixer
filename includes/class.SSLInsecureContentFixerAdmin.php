@@ -13,6 +13,7 @@ class SSLInsecureContentFixerAdmin {
 	public function __construct() {
 		add_action('admin_init', array($this, 'adminInit'));
 		add_action('load-tools_page_ssl-insecure-content-fixer-tests', array($this, 'loadSslTests'));
+		add_action('load-settings_page_ssl-insecure-content-fixer', array($this, 'loadSslTests'));
 		add_action('admin_print_styles-settings_page_ssl-insecure-content-fixer', array($this, 'printStylesSettings'));
 		add_action('admin_menu', array($this, 'adminMenu'));
 		add_action('network_admin_menu', array($this, 'adminMenuNetwork'));

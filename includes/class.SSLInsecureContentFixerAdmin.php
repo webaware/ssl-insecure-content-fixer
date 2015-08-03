@@ -12,8 +12,8 @@ class SSLInsecureContentFixerAdmin {
 	*/
 	public function __construct() {
 		add_action('admin_init', array($this, 'adminInit'));
-		add_action('load-tools_page_ssl-insecure-content-fixer-tests', array($this, 'loadSslTests'));
-		add_action('load-settings_page_ssl-insecure-content-fixer', array($this, 'loadSslTests'));
+		add_action('load-tools_page_ssl-insecure-content-fixer-tests', array($this, 'setNonceCookie'));
+		add_action('load-settings_page_ssl-insecure-content-fixer', array($this, 'setNonceCookie'));
 		add_action('admin_print_styles-settings_page_ssl-insecure-content-fixer', array($this, 'printStylesSettings'));
 		add_action('admin_menu', array($this, 'adminMenu'));
 		add_action('network_admin_menu', array($this, 'adminMenuNetwork'));
@@ -178,7 +178,7 @@ class SSLInsecureContentFixerAdmin {
 	/**
 	* set a cookie functioning like a nonce for the non-WP AJAX script
 	*/
-	public function loadSslTests() {
+	public function setNonceCookie() {
 		require SSLFIX_PLUGIN_ROOT . 'includes/nonces.php';
 
 		$cookie_name  = ssl_insecure_content_fix_nonce_name(SSLFIX_PLUGIN_ROOT);

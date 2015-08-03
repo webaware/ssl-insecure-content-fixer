@@ -178,19 +178,12 @@ class SSLInsecureContentFixerAdmin {
 	* set a cookie functioning like a nonce for the non-WP AJAX script
 	*/
 	public function loadSslTests() {
-		$plugin_path = plugin_dir_path(SSLFIX_PLUGIN_FILE);
-		$cookie_path = '/';
+		require SSLFIX_PLUGIN_ROOT . 'includes/nonces.php';
 
-		// some system data to salt with
-		$data = sprintf("%s\n%s\n%s\n%s", php_uname(), php_ini_loaded_file(), php_ini_scanned_files(), implode("\n", get_loaded_extensions()));
+		$cookie_name  = ssl_insecure_content_fix_nonce_name(SSLFIX_PLUGIN_ROOT);
+		$cookie_value = ssl_insecure_content_fix_nonce_value();
 
-		// synthesise a temporary cookie using server name, file path, time, and system data
-		// NB: only needs to be as complex/secure as the data that could be exposed, i.e. the contents of $_SERVER and script paths
-		$tick = ceil(time() / 120);
-		$cookie_name = 'sslfix_' . md5(sprintf('%s|%s|%s', $_SERVER['SERVER_NAME'], $plugin_path, $tick));
-		$cookie_value = md5($data);
-
-		setcookie($cookie_name, $cookie_value, time() + 30, $cookie_path);
+		setcookie($cookie_name, $cookie_value, time() + 30, '/');
 	}
 
 	/**

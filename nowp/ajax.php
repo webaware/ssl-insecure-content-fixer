@@ -1,18 +1,16 @@
 <?php
 
+// compute the path to the plugin's root folder
+$sslfix_plugin_root = dirname(dirname(__FILE__)) . '/';
+
+require $sslfix_plugin_root . 'includes/nonces.php';
+
 /**
 * test for cookie, must have expected name and value
 */
-$plugin_path = dirname(dirname(__FILE__)) . '/';
 
-// some system data to salt with
-$data = sprintf("%s\n%s\n%s\n%s", php_uname(), php_ini_loaded_file(), php_ini_scanned_files(), implode("\n", get_loaded_extensions()));
-
-// synthesise a temporary cookie name using server name, file path, and time
-// NB: only needs to be as complex/secure as the data that could be exposed, i.e. the contents of $_SERVER and script paths
-$tick = ceil(time() / 120);
-$cookie_name = 'sslfix_' . md5(sprintf('%s|%s|%s', $_SERVER['SERVER_NAME'], $plugin_path, $tick));
-$cookie_value = md5($data);
+$cookie_name  = ssl_insecure_content_fix_nonce_name($sslfix_plugin_root);
+$cookie_value = ssl_insecure_content_fix_nonce_value();
 
 if (!isset($_COOKIE[$cookie_name])) {
 	echo 'missing nonce.';

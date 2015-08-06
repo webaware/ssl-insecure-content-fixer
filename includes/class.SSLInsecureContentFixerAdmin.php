@@ -19,6 +19,9 @@ class SSLInsecureContentFixerAdmin {
 		add_action('network_admin_menu', array($this, 'adminMenuNetwork'));
 		add_filter('plugin_row_meta', array($this, 'pluginDetailsLinks'), 10, 2);
 		add_action('plugin_action_links_' . SSLFIX_PLUGIN_NAME, array($this, 'pluginActionLinks'));
+
+		// in_plugin_update_message isn't supported on multisite != blog-1, so handle manually
+		add_action('after_plugin_row_' . SSLFIX_PLUGIN_NAME, array($this, 'upgradeMessage'), 20, 2);
 	}
 
 	/**
@@ -99,6 +102,26 @@ class SSLInsecureContentFixerAdmin {
 		}
 
 		return $links;
+	}
+
+	/**
+	* show upgrade messages on Plugins admin page
+	* @param string $file
+	* @param object $current_meta
+	*/
+	public function upgradeMessage($file, $plugin_data) {
+		$current = get_site_transient('update_plugins');
+
+		if (isset($current->response[$file])) {
+			$r = $current->response[ $file ];
+
+			if (!empty($r->upgrade_notice)) {
+				$wp_list_table = _get_list_table('WP_Plugins_List_Table');
+				$colspan = $wp_list_table->get_column_count();
+
+				require SSLFIX_PLUGIN_ROOT . 'views/admin-upgrade-message.php';
+			}
+		}
 	}
 
 	/**

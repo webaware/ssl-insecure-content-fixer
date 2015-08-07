@@ -89,6 +89,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 = 2.1.1, soon... =
 
 * fixed: HTTPS detection doesn't work unless SSL Tests page was just visited
+* added: show update notice on plugin admin page
 
 = 2.1.0, 2015-07-30 =
 

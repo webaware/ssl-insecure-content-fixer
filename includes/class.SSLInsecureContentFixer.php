@@ -112,6 +112,12 @@ class SSLInsecureContentFixer {
 					}
 					break;
 
+				case 'HTTP_X_FORWARDED_SSL':
+					if (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && ($_SERVER['HTTP_X_FORWARDED_SSL'] === 'on' || $_SERVER['HTTP_X_FORWARDED_SSL'] === '1')) {
+						$_SERVER['HTTPS'] = 'on';
+					}
+					break;
+
 				case 'HTTP_CF_VISITOR':
 					if (isset($_SERVER['HTTP_CF_VISITOR']) && strpos($_SERVER['HTTP_CF_VISITOR'], 'https') !== false) {
 						$_SERVER['HTTPS'] = 'on';

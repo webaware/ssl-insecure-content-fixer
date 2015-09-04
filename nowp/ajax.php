@@ -175,7 +175,7 @@ function sslfix_get_environment() {
 		$env['detect'] = 'HTTP_X_FORWARDED_PROTO';
 		$env['ssl'] = true;
 	}
-	elseif (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] === 'on') {
+	elseif (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && ($_SERVER['HTTP_X_FORWARDED_SSL'] === 'on' || $_SERVER['HTTP_X_FORWARDED_SSL'] === '1')) {
 		$env['detect'] = 'HTTP_X_FORWARDED_SSL';
 		$env['ssl'] = true;
 	}

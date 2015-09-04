@@ -86,6 +86,10 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Changelog ==
 
+= 2.1.2, soon... =
+
+* fixed: HTTPS detection for host 123-reg
+
 = 2.1.1, 2015-08-11 =
 
 * fixed: HTTPS detection doesn't work unless SSL Tests page was just visited

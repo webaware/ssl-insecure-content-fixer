@@ -7,7 +7,7 @@ Donate link: http://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Co
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 3.2.1
 Tested up to: 4.3.1
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,9 +81,9 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.1.2 =
+= 2.1.3 =
 
-* fixed: HTTPS detection for host 123-reg
+added: Chinese (simplified) translation
 
 == Changelog ==
 

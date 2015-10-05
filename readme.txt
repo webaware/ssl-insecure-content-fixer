@@ -6,7 +6,7 @@ Author URI: http://webaware.com.au/
 Donate link: http://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 3.2.1
-Tested up to: 4.3
+Tested up to: 4.3.1
 Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -89,23 +89,27 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-= 2.1.2, 2015-09-05 =
+### 2.1.3, 2015-10-05
+
+* added: Chinese (simplified) translation (thanks, [漠伦](https://molun.net/)!)
+
+### 2.1.2, 2015-09-05
 
 * fixed: HTTPS detection for host 123-reg
 
-= 2.1.1, 2015-08-11 =
+### 2.1.1, 2015-08-11
 
 * fixed: HTTPS detection doesn't work unless SSL Tests page was just visited
 * added: show update notice on plugin admin page
 
-= 2.1.0, 2015-07-30 =
+### 2.1.0, 2015-07-30
 
 * security fix: restrict access to AJAX test script; don't disclose server environment with system information
 * changed: always show server environment on test results
 * added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
 * added: .htaccess file for AJAX SSL Tests, fixes conflict with some security plugins
 
-= 2.0.0, 2015-07-26 =
+### 2.0.0, 2015-07-26
 
 * changed: handle media loaded by calling `wp_get_attachment_image()`, `wp_get_attachment_image_src()`, etc. via AJAX
 * changed: in multisite, test tools (and settings) are only available to super admins

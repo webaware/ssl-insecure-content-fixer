@@ -28,6 +28,7 @@ See the [SSL Insecure Content Fixer website](https://ssl.webaware.net.au/) for m
 Many thanks to the generous efforts of our translators:
 
 * Bulgarian (bg_BG) -- [Ivan Arnaudov](http://templateinspector.com/)
+* Chinese simplified (zh_CN) -- [漠伦](https://molun.net/)
 
 If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer).
 

@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.1.3, 2015-10-05
+
+* added: Chinese (simplified) translation (thanks, [漠伦](https://molun.net/)!)
+
 ### 2.1.2, 2015-09-05
 
 * fixed: HTTPS detection for host 123-reg

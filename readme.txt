@@ -30,7 +30,7 @@ Many thanks to the generous efforts of our translators:
 * Bulgarian (bg_BG) -- [Ivan Arnaudov](http://templateinspector.com/)
 * Chinese simplified (zh_CN) -- [漠伦](https://molun.net/)
 
-If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer).
+If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer).
 
 == Installation ==
 
@@ -76,7 +76,7 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Contributions ==
 
-* [Translate into your preferred language](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer)
+* [Translate into your preferred language](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer)
 * [Fork me on GitHub](https://github.com/webaware/ssl-insecure-content-fixer)
 
 == Upgrade Notice ==
@@ -116,4 +116,4 @@ The full changelog can be found [on GitHub](https://github.com/webaware/ssl-inse
 * added: settings page for controlling behaviour
 * added: Simple, Content, Widgets, Capture, and Off modes for fixes
 * added: fix for [WooCommerce + Google Chrome HTTP_HTTPS bug](https://github.com/woothemes/woocommerce/issues/8479) (fixed in WooCommerce v2.3.13)
-* added: load translation (if anyone fancies [supplying some](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer)!)
+* added: load translation (if anyone fancies [supplying some](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer)!)

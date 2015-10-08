@@ -29,7 +29,7 @@
 * added: settings page for controlling behaviour
 * added: Simple, Content, Widgets, Capture, and Off modes for fixes
 * added: fix for [WooCommerce + Google Chrome HTTP_HTTPS bug](https://github.com/woothemes/woocommerce/issues/8479) (fixed in WooCommerce v2.3.13)
-* added: load translation (if anyone fancies [supplying some](https://translate.webaware.com.au/projects/ssl-insecure-content-fixer)!)
+* added: load translation (if anyone fancies [supplying some](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer)!)
 
 ### 1.8.0, 2014-02-02
 

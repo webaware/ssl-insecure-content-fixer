@@ -103,6 +103,11 @@ class SSLInsecureContentFixer {
 	* check options for required proxy fix
 	*/
 	protected function proxyFix() {
+		// failsafe: allow website owners to force the proxy fix off, in case of conflicts
+		if (defined('SSLFIX_PLUGIN_NO_HTTPS_DETECT') && SSLFIX_PLUGIN_NO_HTTPS_DETECT) {
+			return;
+		}
+
 		if (!empty($this->options['proxy_fix'])) {
 			switch ($this->options['proxy_fix']) {
 

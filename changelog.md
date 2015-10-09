@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.1.4, soon...
+
+* added: can define `SSLFIX_PLUGIN_NO_HTTPS_DETECT` in wp-config.php to prevent the proxy fix, e.g. to overcome plugin conflicts
+
 ### 2.1.3, 2015-10-05
 
 * added: Chinese (simplified) translation (thanks, [漠伦](https://molun.net/)!)

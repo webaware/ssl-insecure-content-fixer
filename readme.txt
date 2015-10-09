@@ -66,6 +66,12 @@ If your website is behind a load balancer or other reverse proxy, and WordPress 
 
 You are probably behind a reverse proxy -- see the FAQ above about load balancers / reverse proxies, and run the SSL Tests from the WordPress admin Tools menu.
 
+= I changed the HTTPS Detection settings and now I can't login =
+
+You probably have a conflict with another plugin that is also trying to fix HTTPS detection. Add this line to your wp-config.php file, above the lines about `ABSPATH`. You can then change this plugin back to default settings before proceeding.
+
+`define('SSLFIX_PLUGIN_NO_HTTPS_DETECT', true);`
+
 = I still get "insecure content" warnings on my secure page =
 
 Post about it to [the support forum](https://wordpress.org/support/plugin/ssl-insecure-content-fixer), and be sure to include a link to the page. Posts without working links will probably be ignored.

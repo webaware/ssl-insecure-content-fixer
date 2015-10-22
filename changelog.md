@@ -4,6 +4,7 @@
 
 ### 2.1.4, soon...
 
+* added: French translation (thanks, Houzepha Taheraly!)
 * added: can define `SSLFIX_PLUGIN_NO_HTTPS_DETECT` in wp-config.php to prevent the proxy fix, e.g. to overcome plugin conflicts
 * added: fix inline CSS background image rules, e.g. in Capture level
 

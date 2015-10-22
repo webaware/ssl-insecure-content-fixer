@@ -168,6 +168,7 @@ class SSLInsecureContentFixer {
 			'#<(?:img|iframe) .*?src=[\'"]\Khttp://[^\'"]+#i',		// fix image and iframe elements
 			'#<link .*?href=[\'"]\Khttp://[^\'"]+#i',				// fix link elements
 			'#<script [^>]*?src=[\'"]\Khttp://[^\'"]+#i',			// fix script elements
+			'#url\([\'"]?\Khttp://[^)]+#i',							// inline CSS e.g. background images
 		);
 		$content = preg_replace_callback($searches, array(__CLASS__, 'fixContent_src_callback'), $content);
 

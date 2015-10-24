@@ -7,7 +7,6 @@ https://ssl.webaware.net.au/
 
 	$.ajax({
 		url:		sslfix.ajax_url_ssl,
-		cache:		false,
 		data:		{ action: "sslfix-environment" },
 		dataType:	"json",
 		method:		"GET",

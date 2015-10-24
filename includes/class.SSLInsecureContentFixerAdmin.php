@@ -19,6 +19,7 @@ class SSLInsecureContentFixerAdmin {
 		add_action('network_admin_menu', array($this, 'adminMenuNetwork'));
 		add_filter('plugin_row_meta', array($this, 'pluginDetailsLinks'), 10, 2);
 		add_action('plugin_action_links_' . SSLFIX_PLUGIN_NAME, array($this, 'pluginActionLinks'));
+		add_action('wp_ajax_sslfix-test-https', array($this, 'ajaxTestHTTPS'));
 	}
 
 	/**
@@ -162,7 +163,7 @@ class SSLInsecureContentFixerAdmin {
 
 		wp_enqueue_script('sslfix-admin-settings', plugins_url("js/admin-settings$min.js", SSLFIX_PLUGIN_FILE), array('jquery'), $ver, true);
 		wp_localize_script('sslfix-admin-settings', 'sslfix', array(
-			'ajax_url'		=> $ajax_url,
+			'ajax_url_wp'	=> ssl_insecure_content_fix_url(admin_url('admin-ajax.php')),
 			'ajax_url_ssl'	=> ssl_insecure_content_fix_url($ajax_url),
 			'msg'			=> array(
 									'recommended'		=> _x('* detected as recommended setting', 'proxy settings', 'ssl-insecure-content-fixer'),
@@ -226,7 +227,7 @@ class SSLInsecureContentFixerAdmin {
 
 		wp_enqueue_script('sslfix-admin-settings', plugins_url("js/admin-tests$min.js", SSLFIX_PLUGIN_FILE), array('jquery'), $ver, true);
 		wp_localize_script('sslfix-admin-settings', 'sslfix', array(
-			'ajax_url'		=> $ajax_url,
+			'ajax_url_wp'	=> ssl_insecure_content_fix_url(admin_url('admin-ajax.php')),
 			'ajax_url_ssl'	=> ssl_insecure_content_fix_url($ajax_url),
 		));
 	}
@@ -268,6 +269,14 @@ class SSLInsecureContentFixerAdmin {
 		}
 
 		return $is_network_activated;
+	}
+
+	/**
+	* AJAX handler for testing HTTPS detection within WordPress
+	*/
+	public function ajaxTestHTTPS() {
+		$response = array('https' => (is_ssl() ? 'yes' : 'no'));
+		wp_send_json($response);
 	}
 
 }

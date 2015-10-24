@@ -19,3 +19,11 @@
 	padding: 0 2em;
 	color: red;
 }
+
+#sslfix-https-detection.dashicons-yes {
+	color: green;
+}
+
+#sslfix-https-detection.dashicons-no {
+	color: red;
+}

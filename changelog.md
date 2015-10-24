@@ -2,7 +2,7 @@
 
 ## Changelog
 
-### 2.1.4, soon...
+### 2.1.4, 2015-10-24
 
 * added: French translation (thanks, Houzepha Taheraly!)
 * added: can define `SSLFIX_PLUGIN_NO_HTTPS_DETECT` in wp-config.php to prevent the proxy fix, e.g. to overcome plugin conflicts

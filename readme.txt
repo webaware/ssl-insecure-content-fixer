@@ -7,7 +7,7 @@ Donate link: http://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Co
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 3.2.1
 Tested up to: 4.3.1
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,13 +88,20 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.1.3 =
+= 2.1.4 =
 
-added: Chinese (simplified) translation
+fix inline CSS background image rules, e.g. in Capture level; French translation; support `SSLFIX_PLUGIN_NO_HTTPS_DETECT`
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
+
+### 2.1.4, 2015-10-24
+
+* added: French translation (thanks, Houzepha Taheraly!)
+* added: can define `SSLFIX_PLUGIN_NO_HTTPS_DETECT` in wp-config.php to prevent the proxy fix, e.g. to overcome plugin conflicts
+* added: fix inline CSS background image rules, e.g. in Capture level
+* added: indicate whether WordPress HTTPS detection is successful with tick/cross
 
 ### 2.1.3, 2015-10-05
 
@@ -111,16 +118,7 @@ The full changelog can be found [on GitHub](https://github.com/webaware/ssl-inse
 
 ### 2.1.0, 2015-07-30
 
-* security fix: restrict access to AJAX test script; don't disclose server environment with system information
+* **SECURITY FIX**: restrict access to AJAX test script; don't disclose server environment with system information
 * changed: always show server environment on test results
 * added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
 * added: .htaccess file for AJAX SSL Tests, fixes conflict with some security plugins
-
-### 2.0.0, 2015-07-26
-
-* changed: handle media loaded by calling `wp_get_attachment_image()`, `wp_get_attachment_image_src()`, etc. via AJAX
-* changed: in multisite, test tools (and settings) are only available to super admins
-* added: settings page for controlling behaviour
-* added: Simple, Content, Widgets, Capture, and Off modes for fixes
-* added: fix for [WooCommerce + Google Chrome HTTP_HTTPS bug](https://github.com/woothemes/woocommerce/issues/8479) (fixed in WooCommerce v2.3.13)
-* added: load translation (if anyone fancies [supplying some](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer)!)

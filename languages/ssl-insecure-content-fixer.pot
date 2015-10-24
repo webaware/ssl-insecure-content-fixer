@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ssl-insecure-content-fixer\n"
 "Report-Msgid-Bugs-To: translate@webaware.com.au\n"
-"POT-Creation-Date: 2015-08-11 13:28+1000\n"
-"PO-Revision-Date: 2015-08-11 13:28+1000\n"
+"POT-Creation-Date: 2015-10-24 12:42+1100\n"
+"PO-Revision-Date: 2015-10-24 12:42+1100\n"
 "Last-Translator: Ross McKay <rmckay@webaware.com.au>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -15,64 +15,64 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:54
-#: includes/class.SSLInsecureContentFixerAdmin.php:102
+#: includes/class.SSLInsecureContentFixerAdmin.php:65
+#: includes/class.SSLInsecureContentFixerAdmin.php:113
 msgctxt "plugin details links"
 msgid "Settings"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:59
-#: includes/class.SSLInsecureContentFixerAdmin.php:82
+#: includes/class.SSLInsecureContentFixerAdmin.php:70
+#: includes/class.SSLInsecureContentFixerAdmin.php:93
 msgctxt "menu link"
 msgid "SSL Tests"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:62
+#: includes/class.SSLInsecureContentFixerAdmin.php:73
 msgctxt "plugin details links"
 msgid "Instructions"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:63
+#: includes/class.SSLInsecureContentFixerAdmin.php:74
 msgctxt "plugin details links"
 msgid "Get help"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:64
+#: includes/class.SSLInsecureContentFixerAdmin.php:75
 msgctxt "plugin details links"
 msgid "Rating"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:65
+#: includes/class.SSLInsecureContentFixerAdmin.php:76
 msgctxt "plugin details links"
 msgid "Translate"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:66
+#: includes/class.SSLInsecureContentFixerAdmin.php:77
 msgctxt "plugin details links"
 msgid "Donate"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:78
-#: includes/class.SSLInsecureContentFixerAdmin.php:91
+#: includes/class.SSLInsecureContentFixerAdmin.php:89
+#: includes/class.SSLInsecureContentFixerAdmin.php:102
 msgctxt "menu link"
 msgid "SSL Insecure Content"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:146
+#: includes/class.SSLInsecureContentFixerAdmin.php:157
 msgid "Multisite network settings updated."
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:168
+#: includes/class.SSLInsecureContentFixerAdmin.php:179
 msgctxt "proxy settings"
 msgid "* detected as recommended setting"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:185
+#: includes/class.SSLInsecureContentFixerAdmin.php:196
 msgctxt "settings error"
 msgid "Fix level is invalid"
 msgstr ""
 
-#: includes/class.SSLInsecureContentFixerAdmin.php:190
+#: includes/class.SSLInsecureContentFixerAdmin.php:201
 msgctxt "settings error"
 msgid "HTTPS detection setting is invalid"
 msgstr ""
@@ -223,7 +223,7 @@ msgid "Select how WordPress should detect that a page is loaded via HTTPS"
 msgstr ""
 
 #. translators: standard WordPress function means no reverse proxy, just plain website access
-#: views/settings-fields-common.php:83 views/ssl-tests.php:28
+#: views/settings-fields-common.php:83 views/ssl-tests.php:19
 msgctxt "proxy settings"
 msgid "standard WordPress function"
 msgstr ""
@@ -243,7 +243,7 @@ msgctxt "proxy settings"
 msgid "HTTP_CF_VISITOR (CloudFlare Flexible SSL)"
 msgstr ""
 
-#: views/settings-fields-common.php:87 views/ssl-tests.php:44
+#: views/settings-fields-common.php:87 views/ssl-tests.php:35
 msgctxt "proxy settings"
 msgid "unable to detect HTTPS"
 msgstr ""
@@ -263,57 +263,57 @@ msgstr ""
 msgid "SSL Insecure Content Fixer settings"
 msgstr ""
 
-#: views/ssl-tests.php:15
+#: views/ssl-tests.php:6
 msgid "SSL Insecure Content Fixer tests"
 msgstr ""
 
-#: views/ssl-tests.php:17
+#: views/ssl-tests.php:8
 msgid "This page checks to see whether WordPress can detect HTTPS."
 msgstr ""
 
-#: views/ssl-tests.php:20
+#: views/ssl-tests.php:11
 msgid "Running tests..."
 msgstr ""
 
-#: views/ssl-tests.php:25
+#: views/ssl-tests.php:16
 msgid "Tests completed."
 msgstr ""
 
-#: views/ssl-tests.php:28
+#: views/ssl-tests.php:19
 #, php-format
 msgid ""
 "Your server can detect HTTPS normally. The recommended setting for HTTPS "
 "detection is %s."
 msgstr ""
 
-#: views/ssl-tests.php:32 views/ssl-tests.php:36
+#: views/ssl-tests.php:23 views/ssl-tests.php:27
 #, php-format
 msgid ""
 "It looks like your server is behind a reverse proxy. The recommended setting "
 "for HTTPS detection is %s."
 msgstr ""
 
-#: views/ssl-tests.php:40
+#: views/ssl-tests.php:31
 #, php-format
 msgid ""
 "It looks like your server uses CloudFlare Flexible SSL. The recommended "
 "setting for HTTPS detection is %s."
 msgstr ""
 
-#: views/ssl-tests.php:44
+#: views/ssl-tests.php:35
 #, php-format
 msgid ""
 "Your server cannot detect HTTPS. The recommended setting for HTTPS detection "
 "is %s."
 msgstr ""
 
-#: views/ssl-tests.php:45
+#: views/ssl-tests.php:36
 #, php-format
 msgid ""
 "If you know of a way to detect HTTPS on your server, please <a href=\"%s\" "
 "target=\"_blank\">tell me about it</a>."
 msgstr ""
 
-#: views/ssl-tests.php:49
+#: views/ssl-tests.php:40
 msgid "Your server environment shows this:"
 msgstr ""

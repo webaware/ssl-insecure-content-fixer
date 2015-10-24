@@ -24,7 +24,7 @@
 
 ### 2.1.0, 2015-07-30
 
-* security fix: restrict access to AJAX test script; don't disclose server environment with system information
+* **SECURITY FIX**: restrict access to AJAX test script; don't disclose server environment with system information
 * changed: always show server environment on test results
 * added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
 * added: .htaccess file for AJAX SSL Tests, fixes conflict with some security plugins

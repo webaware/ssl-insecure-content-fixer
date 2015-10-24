@@ -63,4 +63,23 @@ https://ssl.webaware.net.au/
 		$("#sslfix-environment").show().find("pre").text(status + "\n" + errmsg);
 	}
 
+	$.ajax({
+		url:		sslfix.ajax_url_wp,
+		data:		{ action: "sslfix-test-https" },
+		dataType:	"json",
+		method:		"GET",
+		xhrFields:	{ withCredentials: true },
+		success:	showHttpsDetected
+	});
+
+	/**
+	* show whether HTTPS was detected correctly within WordPress
+	* @param {Object} response
+	*/
+	function showHttpsDetected(response) {
+		if (response.https) {
+			$("#sslfix-https-detection").addClass("dashicons dashicons-" + response.https);
+		}
+	}
+
 })(jQuery);

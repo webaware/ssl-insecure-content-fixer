@@ -15,6 +15,7 @@ class SSLInsecureContentFixerAdmin {
 		add_action('load-tools_page_ssl-insecure-content-fixer-tests', array($this, 'setNonceCookie'));
 		add_action('load-settings_page_ssl-insecure-content-fixer', array($this, 'setNonceCookie'));
 		add_action('admin_print_styles-settings_page_ssl-insecure-content-fixer', array($this, 'printStylesSettings'));
+		add_action('admin_print_styles-tools_page_ssl-insecure-content-fixer-tests', array($this, 'printStylesTests'));
 		add_action('admin_menu', array($this, 'adminMenu'));
 		add_action('network_admin_menu', array($this, 'adminMenuNetwork'));
 		add_filter('plugin_row_meta', array($this, 'pluginDetailsLinks'), 10, 2);
@@ -41,6 +42,15 @@ class SSLInsecureContentFixerAdmin {
 	public function printStylesSettings() {
 		echo "<style>\n";
 		require SSLFIX_PLUGIN_ROOT . 'css/settings.css';
+		echo "</style>\n";
+	}
+
+	/**
+	* load CSS for tests page
+	*/
+	public function printStylesTests() {
+		echo "<style>\n";
+		require SSLFIX_PLUGIN_ROOT . 'css/tests.css';
 		echo "</style>\n";
 	}
 

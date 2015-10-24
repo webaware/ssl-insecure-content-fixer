@@ -29,7 +29,7 @@ Many thanks to the generous efforts of our translators:
 
 * Bulgarian (bg_BG) -- [Ivan Arnaudov](http://templateinspector.com/)
 * Chinese simplified (zh_CN) -- [漠伦](https://molun.net/)
-* French (fr-FR) -- Houzepha Taheraly
+* French (fr_FR) -- Houzepha Taheraly
 
 If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer).
 

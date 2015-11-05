@@ -2,6 +2,11 @@
 
 ## Changelog
 
+### 2.1.5, soon
+
+* changed: remove some more clutter from server environment report in tests
+* removed: bg_BG, zh_CN translations; now delivered automatically when required
+
 ### 2.1.4, 2015-10-24
 
 * added: French translation (thanks, Houzepha Taheraly!)

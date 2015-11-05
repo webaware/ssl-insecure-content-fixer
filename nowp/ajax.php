@@ -92,6 +92,8 @@ function sslfix_environment() {
 	// build a list of environment variables to omit, as keys
 	// some are just unnecessary, some might expose sensitive information like script paths
 	$env_blacklist = array_flip(array(
+		'argc',
+		'argv',
 		'AUTH_TYPE',
 		'CONTENT_LENGTH',
 		'CONTENT_TYPE',
@@ -112,6 +114,7 @@ function sslfix_environment() {
 		'HTTP_HOST',
 		'HTTP_ORIGIN',
 		'HTTP_REFERER',
+		'HTTP_X_REQUESTED_WITH',
 		'HTTP_USER_AGENT',
 		'ORIG_PATH_INFO',
 		'PATH',

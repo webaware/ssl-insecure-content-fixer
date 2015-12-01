@@ -37,7 +37,6 @@ module.exports = function (grunt) {
 			options: {
 				text_domain: "ssl-insecure-content-fixer",
 				package_name: "ssl-insecure-content-fixer",
-				package_version: "",
 				msgid_bugs_address: "translate@webaware.com.au",
 				encoding: "UTF-8",
 				dest: "languages/",

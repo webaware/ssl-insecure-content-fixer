@@ -2,10 +2,10 @@
 
 ## Changelog
 
-### 2.1.5, soon
+### 2.1.5, 2015-12-12
 
 * changed: remove some more clutter from server environment report in tests
-* removed: bg_BG, zh_CN translations; now delivered automatically when required
+* removed: translations no longer in zip file; now delivered automatically as language packs when required
 
 ### 2.1.4, 2015-10-24
 

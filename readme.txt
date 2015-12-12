@@ -6,8 +6,8 @@ Author URI: http://webaware.com.au/
 Donate link: http://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 3.2.1
-Tested up to: 4.3.1
-Stable tag: 2.1.4
+Tested up to: 4.4
+Stable tag: 2.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,7 @@ Many thanks to the generous efforts of our translators:
 
 * Bulgarian (bg_BG) -- [Ivan Arnaudov](http://templateinspector.com/)
 * Chinese simplified (zh_CN) -- [漠伦](https://molun.net/)
+* English (en_CA) -- [Christoph Herr](http://www.christophherr.com/)
 * French (fr_FR) -- Houzepha Taheraly
 
 If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer).
@@ -88,13 +89,18 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.1.4 =
+= 2.1.5 =
 
-fix inline CSS background image rules, e.g. in Capture level; French translation; support `SSLFIX_PLUGIN_NO_HTTPS_DETECT`
+translations no longer in zip file; now delivered automatically as language packs when required
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
+
+### 2.1.5, 2015-12-12
+
+* changed: remove some more clutter from server environment report in tests
+* removed: translations no longer in zip file; now delivered automatically as language packs when required
 
 ### 2.1.4, 2015-10-24
 

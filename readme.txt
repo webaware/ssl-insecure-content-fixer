@@ -60,6 +60,18 @@ NB: after you open your browser's console, refresh your page so that it tries to
 
 You are probably loading content (such as images) with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `//www.example.com/image.png`; your browser will load the content, using HTTPS when your page uses it.
 
+If your page can be used outside a web browser, e.g. in emails or other non-web documents, then you should always use a protocol and it should probably be "https:" (since you have an SSL certificate). See [Cleaning up content](https://ssl.webaware.net.au/cleaning-up-content/) for more details.
+
+NB: see below for responsive images bug!
+
+= Responsive images don't work with plugin enabled =
+
+WordPress 4.4 introduced [responsive images](https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/). It works well when images are linked with a protocol ("http:" or "https:") and the page is loaded on the same protocol. Sadly, there's a bug in WordPress 4.4 that breaks responsive images when the page is loaded on a different protocol, or when images a linked with no protocol (just "//").
+
+Because this plugin changes image URLs in PHP calls, the responsive images can have a different protocol scheme to the image in the content. Even with the fix level set to Content, responsive images won't work if the page was saved with "http:" for image URLs, until this WordPress bug is fixed.
+
+Until the bug is fixed, the best work-around is to make sure that image URLs have a protocol that matches how the page will be loaded. If the page will always be loaded with HTTPS, then the image URL should start with "https:". If the page can be loaded on both HTTP and HTTPS, then responsive images won't work on at least one of those until the bug is fixed.
+
 = My website is behind a load balancer or reverse proxy =
 
 If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when HTTPS is being used, you will need to select the appropriate [HTTPS detection settings](https://ssl.webaware.net.au/https-detection/). See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](http://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details.

@@ -41,7 +41,7 @@ class SSLInsecureContentFixerAdmin {
 	*/
 	public function printStylesSettings() {
 		echo "<style>\n";
-		require SSLFIX_PLUGIN_ROOT . 'css/settings.css';
+		readfile SSLFIX_PLUGIN_ROOT . 'css/settings.css';
 		echo "</style>\n";
 	}
 
@@ -50,7 +50,7 @@ class SSLInsecureContentFixerAdmin {
 	*/
 	public function printStylesTests() {
 		echo "<style>\n";
-		require SSLFIX_PLUGIN_ROOT . 'css/tests.css';
+		readfile SSLFIX_PLUGIN_ROOT . 'css/tests.css';
 		echo "</style>\n";
 	}
 

@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.1.6, soon...
+
+* fixed: malware warning with GOTMLS vulnerability scanner
+
 ### 2.1.5, 2015-12-12
 
 * changed: remove some more clutter from server environment report in tests

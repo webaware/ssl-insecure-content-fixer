@@ -101,9 +101,9 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.1.5 =
+= 2.1.6 =
 
-translations no longer in zip file; now delivered automatically as language packs when required
+fix malware warning with GOTMLS vulnerability scanner
 
 == Changelog ==
 

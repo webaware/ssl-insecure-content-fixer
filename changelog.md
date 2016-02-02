@@ -2,7 +2,7 @@
 
 ## Changelog
 
-### 2.1.6, soon...
+### 2.1.6, 2016-02-02
 
 * fixed: malware warning with GOTMLS vulnerability scanner
 

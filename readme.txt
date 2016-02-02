@@ -6,8 +6,8 @@ Author URI: http://webaware.com.au/
 Donate link: http://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 3.2.1
-Tested up to: 4.4
-Stable tag: 2.1.5
+Tested up to: 4.4.1
+Stable tag: 2.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,34 +109,11 @@ translations no longer in zip file; now delivered automatically as language pack
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
+### 2.1.6, 2016-02-02
+
+* fixed: malware warning with GOTMLS vulnerability scanner
+
 ### 2.1.5, 2015-12-12
 
 * changed: remove some more clutter from server environment report in tests
 * removed: translations no longer in zip file; now delivered automatically as language packs when required
-
-### 2.1.4, 2015-10-24
-
-* added: French translation (thanks, Houzepha Taheraly!)
-* added: can define `SSLFIX_PLUGIN_NO_HTTPS_DETECT` in wp-config.php to prevent the proxy fix, e.g. to overcome plugin conflicts
-* added: fix inline CSS background image rules, e.g. in Capture level
-* added: indicate whether WordPress HTTPS detection is successful with tick/cross
-
-### 2.1.3, 2015-10-05
-
-* added: Chinese (simplified) translation (thanks, [漠伦](https://molun.net/)!)
-
-### 2.1.2, 2015-09-05
-
-* fixed: HTTPS detection for host 123-reg
-
-### 2.1.1, 2015-08-11
-
-* fixed: HTTPS detection doesn't work unless SSL Tests page was just visited
-* added: show update notice on plugin admin page
-
-### 2.1.0, 2015-07-30
-
-* **SECURITY FIX**: restrict access to AJAX test script; don't disclose server environment with system information
-* changed: always show server environment on test results
-* added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
-* added: .htaccess file for AJAX SSL Tests, fixes conflict with some security plugins

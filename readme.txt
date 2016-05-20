@@ -29,8 +29,9 @@ Many thanks to the generous efforts of our translators:
 
 * Bulgarian (bg_BG) -- [Ivan Arnaudov](http://templateinspector.com/)
 * Chinese simplified (zh_CN) -- [漠伦](https://molun.net/)
-* English (en_CA) -- [Christoph Herr](http://www.christophherr.com/)
-* French (fr_FR) -- Houzepha Taheraly
+* English (en_CA) -- [the English (Canadian) translation team](https://translate.wordpress.org/locale/en-ca/default/wp-plugins/ssl-insecure-content-fixer)
+* French (fr_FR) -- [the French translation team](https://translate.wordpress.org/locale/fr/default/wp-plugins/ssl-insecure-content-fixer)
+* Russian (ru_RU) -- [the Russian translation team](https://translate.wordpress.org/locale/ru/default/wp-plugins/ssl-insecure-content-fixer)
 
 If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer).
 

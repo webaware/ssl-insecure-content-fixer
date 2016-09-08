@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.2.0, soon...
+
+* added: keep WooCommerce widget cache on https separate from its cache on http, to prevent http-cached widgets triggering warnings
+
 ### 2.1.6, 2016-02-02
 
 * fixed: malware warning with GOTMLS vulnerability scanner

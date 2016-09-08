@@ -48,6 +48,9 @@ class SSLInsecureContentFixer {
 				add_filter('wp_get_attachment_url', 'ssl_insecure_content_fix_url', 100);
 			}
 
+			// filter WooCommerce cached widget ID
+			add_filter('woocommerce_cached_widget_id', array(__CLASS__, 'woocommerceWidgetID'));
+
 			// filter plugin Image Widget old-style image links
 			add_filter('image_widget_image_url', 'ssl_insecure_content_fix_url');
 
@@ -276,6 +279,17 @@ class SSLInsecureContentFixer {
 		$uploads['baseurl']	= ssl_insecure_content_fix_url($uploads['baseurl']);
 
 		return $uploads;
+	}
+
+	/**
+	* make sure that WooCommerce caches its widgets on HTTPS separately to on HTTP
+	* @param string $widget_id
+	* @return string
+	*/
+	public static function woocommerceWidgetID($widget_id) {
+		$widget_id .= '_https';
+
+		return $widget_id;
 	}
 
 }

@@ -1,3 +1,8 @@
+<?php
+if (!defined('ABSPATH')) {
+	exit;
+}
+?>
 
 <tr valign="top">
 	<th scope="row"><?php esc_html_e('Fix insecure content', 'ssl-insecure-content-fixer'); ?></th>

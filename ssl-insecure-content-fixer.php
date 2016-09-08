@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
+if (!defined('ABSPATH')) {
+	exit;
+}
+
 define('SSLFIX_PLUGIN_FILE', __FILE__);
 define('SSLFIX_PLUGIN_ROOT', dirname(__FILE__) . '/');
 define('SSLFIX_PLUGIN_NAME', basename(dirname(__FILE__)) . '/' . basename(__FILE__));

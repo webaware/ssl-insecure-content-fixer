@@ -1,5 +1,9 @@
 <?php
 // settings form
+
+if (!defined('ABSPATH')) {
+	exit;
+}
 ?>
 
 <div class="wrap">

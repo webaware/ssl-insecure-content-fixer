@@ -5,9 +5,9 @@ Plugin URI: https://ssl.webaware.net.au/
 Author URI: https://webaware.com.au/
 Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
-Requires at least: 3.2.1
-Tested up to: 4.5.2
-Stable tag: 2.1.6
+Requires at least: 4.0
+Tested up to: 4.6.1
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,16 +63,6 @@ You are probably loading content (such as images) with a URL that starts with "h
 
 If your page can be used outside a web browser, e.g. in emails or other non-web documents, then you should always use a protocol and it should probably be "https:" (since you have an SSL certificate). See [Cleaning up content](https://ssl.webaware.net.au/cleaning-up-content/) for more details.
 
-NB: see below for responsive images bug!
-
-= Responsive images don't work with plugin enabled =
-
-WordPress 4.4 introduced [responsive images](https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/). It works well when images are linked with a protocol ("http:" or "https:") and the page is loaded on the same protocol. Sadly, there's a bug in WordPress 4.4 that breaks responsive images when the page is loaded on a different protocol, or when images a linked with no protocol (just "//").
-
-Because this plugin changes image URLs in PHP calls, the responsive images can have a different protocol scheme to the image in the content. Even with the fix level set to Content, responsive images won't work if the page was saved with "http:" for image URLs, until this WordPress bug is fixed.
-
-Until the bug is fixed, the best work-around is to make sure that image URLs have a protocol that matches how the page will be loaded. If the page will always be loaded with HTTPS, then the image URL should start with "https:". If the page can be loaded on both HTTP and HTTPS, then responsive images won't work on at least one of those until the bug is fixed.
-
 = My website is behind a load balancer or reverse proxy =
 
 If your website is behind a load balancer or other reverse proxy, and WordPress doesn't know when HTTPS is being used, you will need to select the appropriate [HTTPS detection settings](https://ssl.webaware.net.au/https-detection/). See my blog post, [WordPress is_ssl() doesn’t work behind some load balancers](https://snippets.webaware.com.au/snippets/wordpress-is_ssl-doesnt-work-behind-some-load-balancers/), for some details.
@@ -102,19 +92,15 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.1.6 =
+= 2.2.0 =
 
-fix malware warning with GOTMLS vulnerability scanner
+stop WooCommerce cached widgets from http showing on https; fix Gravity Forms confirmation content
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.1.6, 2016-02-02
+### 2.2.0, 2016-09-09
 
-* fixed: malware warning with GOTMLS vulnerability scanner
-
-### 2.1.5, 2015-12-12
-
-* changed: remove some more clutter from server environment report in tests
-* removed: translations no longer in zip file; now delivered automatically as language packs when required
+* added: stop WooCommerce cached widgets from http showing on https
+* added: fix Gravity Forms confirmation content

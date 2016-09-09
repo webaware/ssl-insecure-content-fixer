@@ -165,7 +165,7 @@ class SSLInsecureContentFixer {
 	* load text translations
 	*/
 	public function init() {
-		load_plugin_textdomain('ssl-insecure-content-fixer', false, basename(dirname(SSLFIX_PLUGIN_FILE)) . '/languages/');
+		load_plugin_textdomain('ssl-insecure-content-fixer');
 	}
 
 	/**

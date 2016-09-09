@@ -7,7 +7,6 @@ Version: 2.2.0
 Author: WebAware
 Author URI: https://webaware.com.au/
 Text Domain: ssl-insecure-content-fixer
-Domain Path: /languages/
 */
 
 /*

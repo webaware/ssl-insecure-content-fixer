@@ -154,9 +154,9 @@ class SSLInsecureContentFixer {
 
 		if (!empty($this->options['fix_specific']['woo_https'])) {
 			// stop old WooCommerce versions from falsely detecting HTTPS from Google Chrome/Chromium
-			// @link http://develop.woothemes.com/woocommerce/2015/07/woocommerce-2-3-13-security-and-maintenance-release/
+			// @link https://woocommerce.wordpress.com/2015/07/07/woocommerce-2-3-13-security-and-maintenance-release/
 			// @link https://github.com/woothemes/woocommerce/issues/8479
-			// @link http://superuser.com/a/943989/473190
+			// @link https://superuser.com/a/943989/473190
 			unset($_SERVER['HTTP_HTTPS']);
 		}
 	}

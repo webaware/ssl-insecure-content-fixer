@@ -37,7 +37,7 @@ if (!defined('ABSPATH')) {
 
 	<div class="sslfix-test-result" id="sslfix-detect_fail">
 		<p><?php printf(esc_html__('Your server cannot detect HTTPS. The recommended setting for HTTPS detection is %s.', 'ssl-insecure-content-fixer'), sprintf('<strong>%s</strong>', _x('unable to detect HTTPS', 'proxy settings', 'ssl-insecure-content-fixer'))); ?></p>
-		<p><?php printf(__('If you know of a way to detect HTTPS on your server, please <a href="%s" target="_blank">tell me about it</a>.', 'ssl-insecure-content-fixer'), 'http://shop.webaware.com.au/support/'); ?></p>
+		<p><?php printf(__('If you know of a way to detect HTTPS on your server, please <a href="%s" target="_blank">tell me about it</a>.', 'ssl-insecure-content-fixer'), 'https://shop.webaware.com.au/support/'); ?></p>
 	</div>
 
 	<div class="sslfix-test-result" id="sslfix-environment">

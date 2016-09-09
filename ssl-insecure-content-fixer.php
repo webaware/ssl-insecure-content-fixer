@@ -5,7 +5,7 @@ Plugin URI: https://ssl.webaware.net.au/
 Description: Clean up WordPress website HTTPS insecure content
 Version: 2.2.0-dev
 Author: WebAware
-Author URI: http://webaware.com.au/
+Author URI: https://webaware.com.au/
 Text Domain: ssl-insecure-content-fixer
 Domain Path: /languages/
 */

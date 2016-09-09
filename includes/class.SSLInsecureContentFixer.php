@@ -51,6 +51,9 @@ class SSLInsecureContentFixer {
 			// filter WooCommerce cached widget ID
 			add_filter('woocommerce_cached_widget_id', array(__CLASS__, 'woocommerceWidgetID'));
 
+			// filter Gravity Forms confirmation content
+			add_filter('gform_confirmation', array($this, 'fixContent'));
+
 			// filter plugin Image Widget old-style image links
 			add_filter('image_widget_image_url', 'ssl_insecure_content_fix_url');
 

@@ -5,6 +5,7 @@
 ### 2.2.0, soon...
 
 * added: keep WooCommerce widget cache on https separate from its cache on http, to prevent http-cached widgets triggering warnings
+* added: fix Gravity Forms confirmation content
 
 ### 2.1.6, 2016-02-02
 

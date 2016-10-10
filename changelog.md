@@ -40,7 +40,7 @@
 
 * **SECURITY FIX**: restrict access to AJAX test script; don't disclose server environment with system information
 * changed: always show server environment on test results
-* added: Bulgarian translation (thanks, [Ivan Arnaudov](http://templateinspector.com/)!)
+* added: Bulgarian translation (thanks, [Ivan Arnaudov](https://www.bvionline.eu/)!)
 * added: .htaccess file for AJAX SSL Tests, fixes conflict with some security plugins
 
 ### 2.0.0, 2015-07-26

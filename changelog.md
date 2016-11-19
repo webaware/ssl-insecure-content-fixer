@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.2.1, soon...
+
+* removed: update message display forced on multisite; just leave that for WordPress to handle (it does it so well)
+
 ### 2.2.0, 2016-09-09
 
 * added: stop WooCommerce cached widgets from http showing on https

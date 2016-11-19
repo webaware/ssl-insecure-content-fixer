@@ -79,7 +79,7 @@ if (!defined('ABSPATH')) {
 </tr>
 
 <tr valign="top">
-	<th scope="row"><?php echo esc_html_x('HTTPS detection', 'proxy settings', 'ssl-insecure-content-fixer'); ?><i id="sslfix-https-detection"></i></th>
+	<th scope="row"><?php echo esc_html_x('HTTPS detection', 'proxy settings', 'ssl-insecure-content-fixer'); ?><i id="sslfix-https-detection" aria-hidden="true"></i></th>
 	<td>
 		<p><em><?php echo esc_html_x('Select how WordPress should detect that a page is loaded via HTTPS', 'proxy settings', 'ssl-insecure-content-fixer'); ?></em></p>
 		<p><?php

@@ -25,30 +25,31 @@ https://ssl.webaware.net.au/
 
 				case "HTTPS":
 				case "port":
-					$("#sslfix-normal").show();
+					showHidden("#sslfix-normal");
 					break;
 
 				case "HTTP_X_FORWARDED_PROTO":
-					$("#sslfix-HTTP_X_FORWARDED_PROTO").show();
+					showHidden("#sslfix-HTTP_X_FORWARDED_PROTO");
 					break;
 
 				case "HTTP_X_FORWARDED_SSL":
-					$("#sslfix-HTTP_X_FORWARDED_SSL").show();
+					showHidden("#sslfix-HTTP_X_FORWARDED_SSL");
 					break;
 
 				case "HTTP_CF_VISITOR":
-					$("#sslfix-HTTP_CF_VISITOR").show();
+					showHidden("#sslfix-HTTP_CF_VISITOR");
 					break;
 
 			}
 		}
 		else {
-			$("#sslfix-detect_fail").show();
+			showHidden("#sslfix-detect_fail");
 		}
 
-		$("#sslfix-test-result-head").show();
-		$("#sslfix-loading").hide();
-		$("#sslfix-environment").show().find("pre").text(response.env);
+		hideVisible("#sslfix-loading");
+		showHidden("#sslfix-test-result-head");
+		showHidden("#sslfix-environment");
+		$("#sslfix-environment pre").text(response.env);
 	}
 
 	/**
@@ -58,9 +59,10 @@ https://ssl.webaware.net.au/
 	* @param {String} errmsg
 	*/
 	function showError(xhr, status, errmsg) {
-		$("#sslfix-test-result-head").show();
-		$("#sslfix-loading").hide();
-		$("#sslfix-environment").show().find("pre").text(status + "\n" + errmsg);
+		hideVisible("#sslfix-loading");
+		showHidden("#sslfix-test-result-head");
+		showHidden("#sslfix-environment");
+		$("#sslfix-environment pre").text(status + "\n" + errmsg);
 	}
 
 	$.ajax({
@@ -80,6 +82,22 @@ https://ssl.webaware.net.au/
 		if (response.https) {
 			$("#sslfix-https-detection").addClass("dashicons dashicons-" + response.https);
 		}
+	}
+
+	/**
+	* show hidden element, with accessibility cues
+	* @param {String} selector
+	*/
+	function showHidden(selector) {
+		$(selector).attr("aria-hidden", "false").show();
+	}
+
+	/**
+	* hide visible element, with accessibility cues
+	* @param {String} selector
+	*/
+	function hideVisible(selector) {
+		$(selector).attr("aria-hidden", "true").hide();
 	}
 
 })(jQuery);

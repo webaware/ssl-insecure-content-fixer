@@ -6,8 +6,8 @@ Author URI: https://shop.webaware.com.au/
 Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
-Tested up to: 4.6.1
-Stable tag: 2.2.0
+Tested up to: 4.7
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,15 +94,15 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.2.0 =
+= 2.2.1 =
 
-stop WooCommerce cached widgets from http showing on https; fix Gravity Forms confirmation content
+improve accessibility of admin pages
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.2.0, 2016-09-09
+### 2.2.1, 2016-11-19
 
-* added: stop WooCommerce cached widgets from http showing on https
-* added: fix Gravity Forms confirmation content
+* fixed: improve accessibility of admin pages
+* removed: update message display forced on multisite; just leave that for WordPress to handle (it does it so well)

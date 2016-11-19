@@ -2,7 +2,7 @@
 
 ## Changelog
 
-### 2.2.1, soon...
+### 2.2.1, 2016-11-19
 
 * fixed: improve accessibility of admin pages
 * removed: update message display forced on multisite; just leave that for WordPress to handle (it does it so well)

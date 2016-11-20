@@ -61,7 +61,7 @@ NB: after you open your browser's console, refresh your page so that it tries to
 
 = I get "insecure content" warnings from some of my content =
 
-You are probably loading content (such as images) with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `https://www.example.com/image.png`; your browser will load the content, using HTTPS when your page uses it. Better still, replace "http:" with "https:" so that it always uses https to load images.
+You are probably loading content (such as images) with a URL that starts with "http:". Take that bit away, but leave the slashes, e.g. `//www.example.com/image.png`; your browser will load the content, using HTTPS when your page uses it. Better still, replace "http:" with "https:" so that it always uses https to load images, e.g. `https://www.example.com/image.png`.
 
 If your page can be used outside a web browser, e.g. in emails or other non-web documents, then you should always use a protocol and it should probably be "https:" (since you have an SSL certificate). See [Cleaning up content](https://ssl.webaware.net.au/cleaning-up-content/) for more details.
 

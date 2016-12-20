@@ -122,13 +122,13 @@ class SSLInsecureContentFixer {
 			switch ($this->options['proxy_fix']) {
 
 				case 'HTTP_X_FORWARDED_PROTO':
-					if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+					if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
 						$_SERVER['HTTPS'] = 'on';
 					}
 					break;
 
 				case 'HTTP_X_FORWARDED_SSL':
-					if (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && ($_SERVER['HTTP_X_FORWARDED_SSL'] === 'on' || $_SERVER['HTTP_X_FORWARDED_SSL'] === '1')) {
+					if (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && (strtolower($_SERVER['HTTP_X_FORWARDED_SSL']) === 'on' || $_SERVER['HTTP_X_FORWARDED_SSL'] === '1')) {
 						$_SERVER['HTTPS'] = 'on';
 					}
 					break;

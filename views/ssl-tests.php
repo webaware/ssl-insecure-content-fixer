@@ -36,8 +36,9 @@ if (!defined('ABSPATH')) {
 		<p><?php printf(esc_html__('It looks like your server is behind Amazon CloudFront, not configured to send HTTP_X_FORWARDED_PROTO. The recommended setting for HTTPS detection is %s.', 'ssl-insecure-content-fixer'), '<strong>HTTP_CLOUDFRONT_FORWARDED_PROTO</strong>'); ?></p>
 	</div>
 
+	<?php /* TODO: remove this when removing deprecated HTTP_CF_VISITOR setting */ ?>
 	<div class="sslfix-test-result" id="sslfix-HTTP_CF_VISITOR" aria-hidden="true">
-		<p><?php printf(esc_html__('It looks like your server uses CloudFlare Flexible SSL. The recommended setting for HTTPS detection is %s.', 'ssl-insecure-content-fixer'), '<strong>HTTP_CF_VISITOR</strong>'); ?></p>
+		<p><?php printf(esc_html__('It looks like your server uses Cloudflare Flexible SSL. The recommended setting for HTTPS detection is %s.', 'ssl-insecure-content-fixer'), '<strong>HTTP_CF_VISITOR</strong>'); ?></p>
 	</div>
 
 	<div class="sslfix-test-result" id="sslfix-detect_fail" aria-hidden="true">

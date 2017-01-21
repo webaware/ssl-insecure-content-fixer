@@ -37,7 +37,7 @@ module.exports = function (grunt) {
 				"!js/*.min.js"
 			],
 			options: {
-				jshintrc: "js/.jshintrc",
+				jshintrc: ".jshintrc",
 				force: true
 			}
 		},

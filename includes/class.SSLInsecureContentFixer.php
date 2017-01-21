@@ -133,6 +133,12 @@ class SSLInsecureContentFixer {
 					}
 					break;
 
+				case 'HTTP_CLOUDFRONT_FORWARDED_PROTO':
+					if (isset($_SERVER['HTTP_CLOUDFRONT_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_CLOUDFRONT_FORWARDED_PROTO']) === 'https') {
+						$_SERVER['HTTPS'] = 'on';
+					}
+					break;
+
 				case 'HTTP_CF_VISITOR':
 					if (isset($_SERVER['HTTP_CF_VISITOR']) && strpos($_SERVER['HTTP_CF_VISITOR'], 'https') !== false) {
 						$_SERVER['HTTPS'] = 'on';

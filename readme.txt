@@ -35,6 +35,7 @@ Many thanks to the generous efforts of our translators:
 * French (fr_FR) -- [the French translation team](https://translate.wordpress.org/locale/fr/default/wp-plugins/ssl-insecure-content-fixer)
 * Italian (it_IT) -- [the Italian translation team](https://translate.wordpress.org/locale/it/default/wp-plugins/ssl-insecure-content-fixer)
 * Russian (ru_RU) -- [the Russian translation team](https://translate.wordpress.org/locale/ru/default/wp-plugins/ssl-insecure-content-fixer)
+* Spanish (es_ES) -- [the Spanish translation team](https://translate.wordpress.org/locale/es/default/wp-plugins/ssl-insecure-content-fixer)
 
 If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer).
 

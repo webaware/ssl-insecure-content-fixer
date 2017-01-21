@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.2.2, 2017-01-21
+
+* fixed: make protocol header tests case-insentive (thanks, [waja](https://github.com/waja)!)
+
 ### 2.2.1, 2016-11-19
 
 * fixed: improve accessibility of admin pages

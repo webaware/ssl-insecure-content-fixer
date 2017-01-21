@@ -124,6 +124,8 @@ class SSLInsecureContentFixer {
 				case 'HTTP_X_FORWARDED_PROTO':
 					if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
 						$_SERVER['HTTPS'] = 'on';
+					} else if (isset($_SERVER['HTTP_CLOUDFRONT_FORWARDED_PROTO']) && $_SERVER['HTTP_CLOUDFRONT_FORWARDED_PROTO'] === 'https') {
+						$_SERVER['HTTPS'] = 'on';
 					}
 					break;
 

@@ -6,8 +6,8 @@ Author URI: https://shop.webaware.com.au/
 Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 2.2.1
+Tested up to: 4.7.1
+Stable tag: 2.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,15 +95,16 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.2.1 =
+= 2.2.2 =
 
-improve accessibility of admin pages
+case-insentive protocol header tests; support Amazon CloudFront `CloudFront-Forwarded-Proto` header; clean up responsive image srcset links to external images
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.2.1, 2016-11-19
+### 2.2.2, 2017-01-21
 
-* fixed: improve accessibility of admin pages
-* removed: update message display forced on multisite; just leave that for WordPress to handle (it does it so well)
+* fixed: make protocol header tests case-insentive (thanks, [waja](https://github.com/waja)!)
+* added: support for Amazon CloudFront `CloudFront-Forwarded-Proto` header (thanks, [gmazovec](https://github.com/gmazovec)!)
+* added: clean up responsive image srcset links to external images (WordPress already handles local images)

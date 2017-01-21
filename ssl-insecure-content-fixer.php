@@ -10,7 +10,7 @@ Text Domain: ssl-insecure-content-fixer
 */
 
 /*
-copyright (c) 2012-2016 WebAware Pty Ltd (email : support@webaware.com.au)
+copyright (c) 2012-2017 WebAware Pty Ltd (email : support@webaware.com.au)
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

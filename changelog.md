@@ -6,6 +6,7 @@
 
 * fixed: make protocol header tests case-insentive (thanks, [waja](https://github.com/waja)!)
 * added: support for Amazon CloudFront `CloudFront-Forwarded-Proto` header (thanks, [gmazovec](https://github.com/gmazovec)!)
+* added: clean up responsive image srcset links to external images (WordPress already handles local images)
 
 ### 2.2.1, 2016-11-19
 

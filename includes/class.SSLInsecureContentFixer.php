@@ -192,6 +192,7 @@ class SSLInsecureContentFixer {
 		static $embed_searches = array(
 			'#<object .*?</object>#is',								// fix object elements, including contained embed elements
 			'#<embed .*?(?:/>|</embed>)#is',						// fix embed elements, not contained in object elements
+			'#<img .*srcset=["\']\K[^"\']+#is',						// responsive image srcset links (to external images; WordPress already handles local images)
 		);
 		$content = preg_replace_callback($embed_searches, array(__CLASS__, 'fixContent_embed_callback'), $content);
 

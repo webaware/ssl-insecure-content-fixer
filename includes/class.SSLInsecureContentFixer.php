@@ -192,7 +192,7 @@ class SSLInsecureContentFixer {
 		static $embed_searches = array(
 			'#<object .*?</object>#is',								// fix object elements, including contained embed elements
 			'#<embed .*?(?:/>|</embed>)#is',						// fix embed elements, not contained in object elements
-			'#<img .*srcset=["\']\K[^"\']+#is',						// responsive image srcset links (to external images; WordPress already handles local images)
+			'#<img .*?srcset=["\']\K[^"\']+#is',					// responsive image srcset links (to external images; WordPress already handles local images)
 		);
 		$content = preg_replace_callback($embed_searches, array(__CLASS__, 'fixContent_embed_callback'), $content);
 
@@ -215,7 +215,7 @@ class SSLInsecureContentFixer {
 	*/
 	public static function fixContent_embed_callback($matches) {
 		// match from start of http: URL until either end quotes or query parameter separator, thus allowing for URLs in parameters
-		$content = preg_replace_callback('#http://[^\'"&\?]+#i', array(__CLASS__, 'fixContent_src_callback'), $matches[0]);
+		$content = preg_replace_callback('#http://[^\'"&\?]+?#i', array(__CLASS__, 'fixContent_src_callback'), $matches[0]);
 
 		return $content;
 	}

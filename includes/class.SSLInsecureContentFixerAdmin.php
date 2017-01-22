@@ -209,8 +209,8 @@ class SSLInsecureContentFixerAdmin {
 			require SSLFIX_PLUGIN_ROOT . 'views/settings-form.php';
 		}
 
-		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		$ver = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? time() : SSLFIX_PLUGIN_VERSION;
+		$min = SCRIPT_DEBUG ? '' : '.min';
+		$ver = SCRIPT_DEBUG ? time() : SSLFIX_PLUGIN_VERSION;
 
 		$ajax_url = $this->getNoWpAJAX();
 
@@ -273,8 +273,8 @@ class SSLInsecureContentFixerAdmin {
 	public function testPage() {
 		require SSLFIX_PLUGIN_ROOT . 'views/ssl-tests.php';
 
-		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		$ver = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? time() : SSLFIX_PLUGIN_VERSION;
+		$min = SCRIPT_DEBUG ? '' : '.min';
+		$ver = SCRIPT_DEBUG ? time() : SSLFIX_PLUGIN_VERSION;
 
 		$ajax_url = $this->getNoWpAJAX();
 

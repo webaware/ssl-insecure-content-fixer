@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.2.3, soon...
+
+* added: prerequisites check, to ensure that plugin can run successfully
+
 ### 2.2.2, 2017-01-21
 
 * fixed: make protocol header tests case-insensitive (thanks, [waja](https://github.com/waja)!)

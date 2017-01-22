@@ -16,6 +16,8 @@ class SSLInsecureContentFixerAdmin {
 	*/
 	public function __construct() {
 		add_action('admin_init', array($this, 'adminInit'));
+		add_action('admin_notices', array($this, 'checkPrerequisites'));
+		add_action('network_admin_notices', array($this, 'checkPrerequisites'));
 		add_action('load-tools_page_ssl-insecure-content-fixer-tests', array($this, 'setNonceCookie'));
 		add_action('load-settings_page_ssl-insecure-content-fixer', array($this, 'setNonceCookie'));
 		add_action('admin_print_styles-settings_page_ssl-insecure-content-fixer', array($this, 'printStylesSettings'));
@@ -51,6 +53,69 @@ class SSLInsecureContentFixerAdmin {
 		echo "<style>\n";
 		readfile(SSLFIX_PLUGIN_ROOT . 'css/tests.css');
 		echo "</style>\n";
+	}
+
+	/**
+	* check for required PHP extensions, tell admin if any are missing
+	*/
+	public function checkPrerequisites() {
+		// only bother admins / plugin installers / option setters with this stuff
+		if (!current_user_can('activate_plugins') && !current_user_can('manage_options')) {
+			return;
+		}
+
+		// only on specific pages
+		if (!self::canShowNotices()) {
+			return;
+		}
+
+		// need these PHP extensions
+		$prereqs = array('json', 'pcre');
+		$missing = array();
+		foreach ($prereqs as $ext) {
+			if (!extension_loaded($ext)) {
+				$missing[] = $ext;
+			}
+		}
+		if (!empty($missing)) {
+			include SSLFIX_PLUGIN_ROOT . 'views/requires-extensions.php';
+		}
+
+		// and PCRE needs to be v8+ or we break! e.g. \K not present until v7.2 and some sites still use v6.6!
+		$pcre_min = '8';
+		if (defined('PCRE_VERSION') && version_compare(PCRE_VERSION, $pcre_min, '<')) {
+			include SSLFIX_PLUGIN_ROOT . 'views/requires-pcre.php';
+		}
+	}
+
+	/**
+	* check admin page to see if we should show notices or not
+	*/
+	protected static function canShowNotices() {
+		global $pagenow;
+
+		switch ($pagenow) {
+
+			case 'plugins.php':
+				return true;
+
+			case 'tools.php':
+				if (!empty($_GET['page']) && wp_unslash($_GET['page']) === 'ssl-insecure-content-fixer-tests') {
+					return true;
+				}
+				return false;
+
+			case 'options-general.php':
+			case 'settings.php':
+				if (!empty($_GET['page']) && wp_unslash($_GET['page']) === 'ssl-insecure-content-fixer') {
+					return true;
+				}
+				return false;
+
+			default:
+				return false;
+
+		}
 	}
 
 	/**

@@ -258,8 +258,8 @@ class SSLInsecureContentFixer {
 	* @return string
 	*/
 	public static function fixContent_embed_callback($matches) {
-		// match from start of http: URL until either end quotes or query parameter separator, thus allowing for URLs in parameters
-		$content = preg_replace_callback('#http://[^\'"&\?]+?#i', array(__CLASS__, 'fixContent_src_callback'), $matches[0]);
+		// match from start of http: URL until either end quotes, space, or query parameter separator, thus allowing for URLs in parameters
+		$content = preg_replace_callback('#http://[^\'"&\? ]+#i', array(__CLASS__, 'fixContent_src_callback'), $matches[0]);
 
 		return $content;
 	}

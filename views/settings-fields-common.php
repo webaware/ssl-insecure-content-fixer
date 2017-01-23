@@ -51,9 +51,20 @@ if (!defined('ABSPATH')) {
 			<li>
 				<input type="radio" name="ssl_insecure_content_fixer[fix_level]" id="fix_level_capture" value="capture" <?php checked($options['fix_level'], 'capture'); ?> />
 				<label for="fix_level_capture"><?php echo esc_html_x('Capture', 'fix level settings', 'ssl-insecure-content-fixer'); ?></label>
-				<p class="sslfix-level-desc"><?php echo esc_html_x('The most impact on memory usage and biggest potential to break things', 'fix level settings', 'ssl-insecure-content-fixer'); ?></p>
+				<p class="sslfix-level-desc"><?php echo esc_html_x('Everything on the page, from the header to the footer:', 'fix level settings', 'ssl-insecure-content-fixer'); ?></p>
 				<ul class="sslfix-bullets">
 					<li><?php echo esc_html_x('capture the whole page and fix scripts, stylesheets, and other resources', 'fix level settings', 'ssl-insecure-content-fixer'); ?></li>
+					<li><?php echo esc_html_x('excludes AJAX calls, which can cause compatibility and performance problems', 'fix level settings', 'ssl-insecure-content-fixer'); ?></li>
+				</ul>
+			</li>
+
+			<li>
+				<input type="radio" name="ssl_insecure_content_fixer[fix_level]" id="fix_level_capture_all" value="capture_all" <?php checked($options['fix_level'], 'capture_all'); ?> />
+				<label for="fix_level_capture_all"><?php echo esc_html_x('Capture All', 'fix level settings', 'ssl-insecure-content-fixer'); ?></label>
+				<p class="sslfix-level-desc"><?php echo esc_html_x('The biggest potential to break things, but sometimes necessary', 'fix level settings', 'ssl-insecure-content-fixer'); ?></p>
+				<ul class="sslfix-bullets">
+					<li><?php echo esc_html_x('capture the whole page and fix scripts, stylesheets, and other resources', 'fix level settings', 'ssl-insecure-content-fixer'); ?></li>
+					<li><?php echo esc_html_x('includes AJAX calls, which can cause compatibility and performance problems', 'fix level settings', 'ssl-insecure-content-fixer'); ?></li>
 				</ul>
 			</li>
 

@@ -235,7 +235,7 @@ class SSLInsecureContentFixerAdmin {
 		$output['fix_level']		= empty($input['fix_level']) ? '' : $input['fix_level'];
 		$output['proxy_fix']		= empty($input['proxy_fix']) ? '' : $input['proxy_fix'];
 
-		if (!in_array($output['fix_level'], array('off', 'simple', 'content', 'widgets', 'capture'))) {
+		if (!in_array($output['fix_level'], array('off', 'simple', 'content', 'widgets', 'capture', 'capture_all'))) {
 			add_settings_error(SSLFIX_PLUGIN_OPTIONS, 'sslfix-fix_level', _x('Fix level is invalid', 'settings error', 'ssl-insecure-content-fixer'));
 			$this->has_settings_errors = true;
 		}

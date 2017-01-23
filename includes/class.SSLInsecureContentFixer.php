@@ -44,7 +44,7 @@ class SSLInsecureContentFixer {
 			add_filter('upload_dir', array(__CLASS__, 'uploadDir'));
 
 			// filter image links on front end e.g. in calls to wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
-			if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) {
+			if (!is_admin() || $this->isAjax()) {
 				add_filter('wp_get_attachment_url', 'ssl_insecure_content_fix_url', 100);
 			}
 
@@ -70,8 +70,13 @@ class SSLInsecureContentFixer {
 				add_action('dynamic_sidebar_after', array($this, 'fixWidgetsEnd'), 9999, 2);
 			}
 
-			// handle Capture fix level
-			if ($this->options['fix_level'] === 'capture') {
+			// handle Capture fix level (excludes AJAX calls)
+			if ($this->options['fix_level'] === 'capture' && !$this->isAjax()) {
+				add_action('init', array($this, 'fixCaptureStart'), 5);
+			}
+
+			// handle Capture All fix level (even AJAX calls)
+			if ($this->options['fix_level'] === 'capture_all' && !$this->isAjaxExcluded()) {
 				add_action('init', array($this, 'fixCaptureStart'), 5);
 			}
 
@@ -85,6 +90,45 @@ class SSLInsecureContentFixer {
 			require SSLFIX_PLUGIN_ROOT . 'includes/class.SSLInsecureContentFixerAdmin.php';
 			new SSLInsecureContentFixerAdmin();
 		}
+	}
+
+	/**
+	* detect AJAX call
+	* @return bool
+	*/
+	protected function isAjax() {
+		if (function_exists('wp_doing_ajax')) {
+			$is_ajax = wp_doing_ajax();
+		}
+		else {
+			$is_ajax = defined('DOING_AJAX') && DOING_AJAX;
+		}
+
+		return $is_ajax;
+	}
+
+	/**
+	* exclude certain AJAX calls from capture_all
+	* @return bool
+	*/
+	protected function isAjaxExcluded() {
+		$exclude = false;
+
+		if ($this->isAjax()) {
+			if (!empty($_REQUEST['action'])) {
+				$exclude = in_array($_REQUEST['action'], array(
+					// some standard WordPress actions
+					'heartbeat',
+
+					// this plugin
+					'sslfix-test-https',
+				));
+			}
+
+			$exclude = apply_filters('ssl_insecure_content_ajax_exclude', $exclude);
+		}
+
+		return $exclude;
 	}
 
 	/**

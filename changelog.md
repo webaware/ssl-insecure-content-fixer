@@ -4,6 +4,7 @@
 
 ### 2.2.3, soon...
 
+* changed: Capture no longer captures AJAX requests; new mode Capture All introduced to capture AJAX requests too
 * added: prerequisites check, to ensure that plugin can run successfully
 
 ### 2.2.2, 2017-01-21

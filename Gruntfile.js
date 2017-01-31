@@ -45,7 +45,8 @@ module.exports = function (grunt) {
 		uglify: {
 			build: {
 				options: {
-					preserveComments: "some"
+					ASCIIOnly: true,
+					banner: "// <%= pkg.name %>\n// <%= pkg.homepage %>\n"
 				},
 				files: [{
 					expand: true,

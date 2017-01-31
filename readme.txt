@@ -6,8 +6,8 @@ Author URI: https://shop.webaware.com.au/
 Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
-Tested up to: 4.7.1
-Stable tag: 2.2.2
+Tested up to: 4.7.2
+Stable tag: 2.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,16 +96,18 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.2.2 =
+= 2.2.3 =
 
-case-insensitive protocol header tests; support Amazon CloudFront `CloudFront-Forwarded-Proto` header; clean up responsive image srcset links to external images
+fix Visual Composer and Theme Fusion Builder crashes; add Capture All mode and stop Capture mode affecting AJAX requests
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.2.2, 2017-01-21
+### 2.2.3, 2017-02-01
 
-* fixed: make protocol header tests case-insensitive (thanks, [waja](https://github.com/waja)!)
-* added: support for Amazon CloudFront `CloudFront-Forwarded-Proto` header (thanks, [gmazovec](https://github.com/gmazovec)!)
-* added: clean up responsive image srcset links to external images (WordPress already handles local images)
+Many thanks to [@jsherk](https://wordpress.org/support/users/jsherk/) without whose help this release could have been weeks away.
+
+* fixed: breaks Visual Composer back end editing due to a regular expression problem (now you have two!)
+* changed: Capture no longer captures AJAX requests; new mode Capture All introduced to capture AJAX requests too
+* added: prerequisites check, to ensure that plugin can run successfully

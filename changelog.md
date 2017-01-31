@@ -2,7 +2,7 @@
 
 ## Changelog
 
-### 2.2.3, soon...
+### 2.2.3, 2017-02-01
 
 * fixed: breaks Visual Composer back end editing due to a regular expression problem (now you have two!)
 * changed: Capture no longer captures AJAX requests; new mode Capture All introduced to capture AJAX requests too

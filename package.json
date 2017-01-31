@@ -1,6 +1,6 @@
 {
   "name": "ssl-insecure-content-fixer",
-  "version": "2.2.3-dev2",
+  "version": "2.2.3-dev3",
   "description": "Clean up WordPress website HTTPS insecure content",
   "main": "Gruntfile.js",
   "devDependencies": {

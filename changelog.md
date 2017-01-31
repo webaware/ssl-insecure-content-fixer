@@ -4,6 +4,7 @@
 
 ### 2.2.3, soon...
 
+* fixed: breaks Visual Composer back end editing due to a regular expression problem (now you have two!)
 * changed: Capture no longer captures AJAX requests; new mode Capture All introduced to capture AJAX requests too
 * added: prerequisites check, to ensure that plugin can run successfully
 

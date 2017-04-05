@@ -100,6 +100,7 @@ if (!defined('ABSPATH')) {
 			'HTTP_X_FORWARDED_PROTO'			=> _x('HTTP_X_FORWARDED_PROTO (e.g. load balancer, reverse proxy, NginX)', 'proxy settings', 'ssl-insecure-content-fixer'),
 			'HTTP_X_FORWARDED_SSL'				=> _x('HTTP_X_FORWARDED_SSL (e.g. reverse proxy)', 'proxy settings', 'ssl-insecure-content-fixer'),
 			'HTTP_CLOUDFRONT_FORWARDED_PROTO'	=> _x('HTTP_CLOUDFRONT_FORWARDED_PROTO (Amazon CloudFront HTTPS cached content)', 'proxy settings', 'ssl-insecure-content-fixer'),
+			'HTTP_X_ARR_SSL'					=> _x('HTTP_X_ARR_SSL (Windows Azure ARR)', 'proxy settings', 'ssl-insecure-content-fixer'),
 			'HTTP_CF_VISITOR'					=> _x('HTTP_CF_VISITOR (Cloudflare Flexible SSL); deprecated, since Cloudflare sends HTTP_X_FORWARDED_PROTO now', 'proxy settings', 'ssl-insecure-content-fixer'),
 			'detect_fail'						=> _x('unable to detect HTTPS', 'proxy settings', 'ssl-insecure-content-fixer'),
 		);

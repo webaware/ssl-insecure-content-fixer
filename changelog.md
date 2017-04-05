@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.2.4, soon...
+
+* added: support for Windows Azure with ARR
+
 ### 2.2.3, 2017-02-01
 
 * fixed: breaks Visual Composer back end editing due to a regular expression problem (now you have two!)

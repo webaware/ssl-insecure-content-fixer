@@ -40,6 +40,10 @@ https://ssl.webaware.net.au/
 					showHidden("#sslfix-HTTP_CLOUDFRONT_FORWARDED_PROTO");
 					break;
 
+				case "HTTP_X_ARR_SSL":
+					showHidden("#sslfix-HTTP_X_ARR_SSL");
+					break;
+
 				case "HTTP_CF_VISITOR":
 					showHidden("#sslfix-HTTP_CF_VISITOR");
 					break;

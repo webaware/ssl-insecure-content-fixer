@@ -12,6 +12,8 @@ class SSLInsecureContentFixer {
 	public $options							= false;
 	public $network_options					= false;
 
+	protected $domain_exclusions			= false;
+
 	/**
 	* static method for getting the instance of this singleton object
 	* @return self
@@ -36,6 +38,8 @@ class SSLInsecureContentFixer {
 		add_action('init', array($this, 'init'));
 
 		if ($this->options['fix_level'] !== 'off' && is_ssl()) {
+			add_action('init', array($this, 'runFilters'), 4);
+
 			// filter script and stylesheet links
 			add_filter('script_loader_src', 'ssl_insecure_content_fix_url');
 			add_filter('style_loader_src', 'ssl_insecure_content_fix_url');
@@ -129,6 +133,16 @@ class SSLInsecureContentFixer {
 		}
 
 		return $exclude;
+	}
+
+	/**
+	* run filters for plugins / themes that register domain exclusions
+	*/
+	public function runFilters() {
+		$domains = apply_filters('ssl_insecure_content_domain_exclusions', array());
+		if (!empty($domains) && is_array($domains)) {
+			$this->domain_exclusions = $domains;
+		}
 	}
 
 	/**
@@ -236,7 +250,7 @@ class SSLInsecureContentFixer {
 			'#<script [^>]*?src=[\'"]\Khttp://[^\'"]+#i',			// fix script elements
 			'#url\([\'"]?\Khttp://[^)]+#i',							// inline CSS e.g. background images
 		);
-		$content = preg_replace_callback($searches, array(__CLASS__, 'fixContent_src_callback'), $content);
+		$content = preg_replace_callback($searches, array($this, 'fixContent_src_callback'), $content);
 
 		// fix object embeds
 		static $embed_searches = array(
@@ -244,7 +258,7 @@ class SSLInsecureContentFixer {
 			'#<embed .*?(?:/>|</embed>)#is',						// fix embed elements, not contained in object elements
 			'#<img [^>]+srcset=["\']\K[^"\']+#is',					// responsive image srcset links (to external images; WordPress already handles local images)
 		);
-		$content = preg_replace_callback($embed_searches, array(__CLASS__, 'fixContent_embed_callback'), $content);
+		$content = preg_replace_callback($embed_searches, array($this, 'fixContent_embed_callback'), $content);
 
 		return $content;
 	}
@@ -254,7 +268,17 @@ class SSLInsecureContentFixer {
 	* @param array $matches
 	* @return string
 	*/
-	public static function fixContent_src_callback($matches) {
+	public function fixContent_src_callback($matches) {
+		// allow content URL exclusions for selected domains
+		if (!empty($this->domain_exclusions)) {
+			foreach ($this->domain_exclusions as $domain) {
+				// search for domain name starting after http://
+				if (stripos($matches[0], $domain) === 7) {
+					return $matches[0];
+				}
+			}
+		}
+
 		return 'https' . substr($matches[0], 4);
 	}
 
@@ -263,9 +287,9 @@ class SSLInsecureContentFixer {
 	* @param array $matches
 	* @return string
 	*/
-	public static function fixContent_embed_callback($matches) {
+	public function fixContent_embed_callback($matches) {
 		// match from start of http: URL until either end quotes, space, or query parameter separator, thus allowing for URLs in parameters
-		$content = preg_replace_callback('#http://[^\'"&\? ]+#i', array(__CLASS__, 'fixContent_src_callback'), $matches[0]);
+		$content = preg_replace_callback('#http://[^\'"&\? ]+#i', array($this, 'fixContent_src_callback'), $matches[0]);
 
 		return $content;
 	}

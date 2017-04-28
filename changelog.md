@@ -5,6 +5,7 @@
 ### 2.2.4, soon...
 
 * added: support for Windows Azure with ARR
+* added: filter `ssl_insecure_content_domain_exclusions` for domains that can be excluded from content cleaning (ignored for enqueued scripts)
 
 ### 2.2.3, 2017-02-01
 

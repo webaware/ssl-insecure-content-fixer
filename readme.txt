@@ -6,8 +6,8 @@ Author URI: https://shop.webaware.com.au/
 Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
-Tested up to: 4.7.2
-Stable tag: 2.2.3
+Tested up to: 4.7
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,9 +31,11 @@ Many thanks to the generous efforts of our translators:
 * Chinese simplified (zh_CN) -- [the Chinese translation team](https://translate.wordpress.org/locale/zh-cn/default/wp-plugins/ssl-insecure-content-fixer)
 * English (en_CA) -- [the English (Canadian) translation team](https://translate.wordpress.org/locale/en-ca/default/wp-plugins/ssl-insecure-content-fixer)
 * English (en_GB) -- [the English (British) translation team](https://translate.wordpress.org/locale/en-gb/default/wp-plugins/ssl-insecure-content-fixer)
+* Dutch (nl_NL) -- [the Dutch translation team](https://translate.wordpress.org/locale/nl/default/wp-plugins/ssl-insecure-content-fixer)
 * German (de_DE) -- [the German translation team](https://translate.wordpress.org/locale/de/default/wp-plugins/ssl-insecure-content-fixer)
 * French (fr_FR) -- [the French translation team](https://translate.wordpress.org/locale/fr/default/wp-plugins/ssl-insecure-content-fixer)
 * Italian (it_IT) -- [the Italian translation team](https://translate.wordpress.org/locale/it/default/wp-plugins/ssl-insecure-content-fixer)
+* Japanese (ja) -- [the Japanese translation team](https://translate.wordpress.org/locale/ja/default/wp-plugins/ssl-insecure-content-fixer)
 * Russian (ru_RU) -- [the Russian translation team](https://translate.wordpress.org/locale/ru/default/wp-plugins/ssl-insecure-content-fixer)
 * Spanish (es_ES) -- [the Spanish translation team](https://translate.wordpress.org/locale/es/default/wp-plugins/ssl-insecure-content-fixer)
 
@@ -96,18 +98,15 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.2.3 =
+= 2.3.0 =
 
-fix Visual Composer and Theme Fusion Builder crashes; add Capture All mode and stop Capture mode affecting AJAX requests
+added support for Windows Azure with ARR; added filter for domains that can be excluded from content cleaning
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.2.3, 2017-02-01
+### 2.3.0, 2017-05-01
 
-Many thanks to [@jsherk](https://wordpress.org/support/users/jsherk/) without whose help this release could have been weeks away.
-
-* fixed: breaks Visual Composer back end editing due to a regular expression problem (now you have two!)
-* changed: Capture no longer captures AJAX requests; new mode Capture All introduced to capture AJAX requests too
-* added: prerequisites check, to ensure that plugin can run successfully
+* added: support for Windows Azure with ARR
+* added: filter `ssl_insecure_content_domain_exclusions` for domains that can be excluded from content cleaning (ignored for enqueued scripts)

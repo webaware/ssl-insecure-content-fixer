@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.3.1, soon...
+
+* fixed: don't capture content exports from Tools > Export when mode is Capture or Capture All
+
 ### 2.3.0, 2017-05-01
 
 * added: support for Windows Azure with ARR

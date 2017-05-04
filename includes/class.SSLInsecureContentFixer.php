@@ -320,6 +320,21 @@ class SSLInsecureContentFixer {
 	* start capturing page for Capture fix level
 	*/
 	public function fixCaptureStart() {
+		$disable_capture = false;
+
+		// check for export script
+		if (self::isExporting()) {
+			$disable_capture = true;
+		}
+
+		// allow hookers to prevent capture
+		$disable_capture = apply_filters('ssl_insecure_content_disable_capture', $disable_capture);
+
+		if ($disable_capture) {
+			return;
+		}
+
+		// start capturing content
 		ob_start(array($this, 'fixCaptureEnd'));
 	}
 
@@ -374,6 +389,28 @@ class SSLInsecureContentFixer {
 		$widget_id .= '_https';
 
 		return $widget_id;
+	}
+
+	/**
+	* test for tools/export page exporting data
+	* @return bool
+	*/
+	protected static function isExporting() {
+		if (is_blog_admin() && self::stringEndsWith($_SERVER['SCRIPT_FILENAME'], 'wp-admin/export.php')) {
+			return isset($_GET['download']);
+		}
+
+		return false;
+	}
+
+	/**
+	* test whether string ends with sought value
+	* @param string $haystack
+	* @param string $needle
+	* @return bool
+	*/
+	protected static function stringEndsWith($haystack, $needle) {
+		return substr_compare($haystack, $needle, -strlen($needle), strlen($needle), true) === 0;
 	}
 
 }

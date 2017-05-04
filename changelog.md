@@ -5,6 +5,7 @@
 ### 2.3.1, soon...
 
 * fixed: don't capture content exports from Tools > Export when mode is Capture or Capture All
+* added: filter `ssl_insecure_content_disable_capture` for disabling Capture mode on selected pages / scripts
 
 ### 2.3.0, 2017-05-01
 

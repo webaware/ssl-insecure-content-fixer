@@ -55,6 +55,9 @@ class SSLInsecureContentFixer {
 			// filter WooCommerce cached widget ID
 			add_filter('woocommerce_cached_widget_id', array(__CLASS__, 'woocommerceWidgetID'));
 
+			// filter to disable Capture / Capture All in some circumstances
+			add_filter('ssl_insecure_content_disable_capture', array(__CLASS__, 'maybeDisableCapture'));
+
 			// filter Gravity Forms confirmation content
 			add_filter('gform_confirmation', array($this, 'fixContent'));
 
@@ -320,21 +323,12 @@ class SSLInsecureContentFixer {
 	* start capturing page for Capture fix level
 	*/
 	public function fixCaptureStart() {
-		$disable_capture = false;
-
-		// check for export script
-		if (self::isExporting()) {
-			$disable_capture = true;
-		}
-
 		// allow hookers to prevent capture
-		$disable_capture = apply_filters('ssl_insecure_content_disable_capture', $disable_capture);
-
-		if ($disable_capture) {
+		if (apply_filters('ssl_insecure_content_disable_capture', false)) {
 			return;
 		}
 
-		// start capturing content
+		// start capturing page
 		ob_start(array($this, 'fixCaptureEnd'));
 	}
 
@@ -392,15 +386,17 @@ class SSLInsecureContentFixer {
 	}
 
 	/**
-	* test for tools/export page exporting data
+	* disable Capture / Capture All in some circumstances
+	* @param $disable_capture
 	* @return bool
 	*/
-	protected static function isExporting() {
-		if (is_blog_admin() && self::stringEndsWith($_SERVER['SCRIPT_FILENAME'], 'wp-admin/export.php')) {
-			return isset($_GET['download']);
+	public static function maybeDisableCapture($disable_capture) {
+		// test for Tools/Export page exporting data
+		if (is_blog_admin() && self::stringEndsWith($_SERVER['SCRIPT_FILENAME'], 'wp-admin/export.php') && isset($_GET['download'])) {
+			$disable_capture = true;
 		}
 
-		return false;
+		return $disable_capture;
 	}
 
 	/**
@@ -410,7 +406,8 @@ class SSLInsecureContentFixer {
 	* @return bool
 	*/
 	protected static function stringEndsWith($haystack, $needle) {
-		return substr_compare($haystack, $needle, -strlen($needle), strlen($needle), true) === 0;
+		$needle_length = strlen($needle);
+		return substr_compare($haystack, $needle, -$needle_length, $needle_length, true) === 0;
 	}
 
 }

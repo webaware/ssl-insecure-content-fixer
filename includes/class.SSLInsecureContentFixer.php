@@ -88,8 +88,10 @@ class SSLInsecureContentFixer {
 				add_action('wp_print_styles', array($this, 'fixSpecific'), 100);
 			}
 
-			// filter WooCommerce cached widget ID
-			add_filter('woocommerce_cached_widget_id', array(__CLASS__, 'woocommerceWidgetID'));
+			// filter WooCommerce cached widget ID if base site is not https
+			if (stripos(get_option('home'), 'http://') === 0) {
+				add_filter('woocommerce_cached_widget_id', array(__CLASS__, 'woocommerceWidgetID'));
+			}
 
 			// filter Gravity Forms confirmation content
 			add_filter('gform_confirmation', array($this, 'fixContent'));

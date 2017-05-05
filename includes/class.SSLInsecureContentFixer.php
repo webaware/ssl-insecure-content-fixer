@@ -52,45 +52,50 @@ class SSLInsecureContentFixer {
 				add_filter('wp_get_attachment_url', 'ssl_insecure_content_fix_url', 100);
 			}
 
-			// filter WooCommerce cached widget ID
-			add_filter('woocommerce_cached_widget_id', array(__CLASS__, 'woocommerceWidgetID'));
+			switch ($this->options['fix_level']) {
 
-			// filter to disable Capture / Capture All in some circumstances
-			add_filter('ssl_insecure_content_disable_capture', array(__CLASS__, 'maybeDisableCapture'));
+				// handle Content fix level
+				case 'content':
+					add_filter('the_content', array($this, 'fixContent'), 9999);		// also for fix_level 'widget'
+					add_filter('widget_text', array($this, 'fixContent'), 9999);		// not for fix_level 'widget' (no need to duplicate effort)
+					break;
 
-			// filter Gravity Forms confirmation content
-			add_filter('gform_confirmation', array($this, 'fixContent'));
+				// handle Widget fix level
+				case 'widgets':
+					add_filter('the_content', array($this, 'fixContent'), 9999);		// also for fix_level 'content'
+					add_action('dynamic_sidebar_before', array($this, 'fixWidgetsStart'), 9999, 2);
+					add_action('dynamic_sidebar_after', array($this, 'fixWidgetsEnd'), 9999, 2);
+					break;
 
-			// filter plugin Image Widget old-style image links
-			add_filter('image_widget_image_url', 'ssl_insecure_content_fix_url');
+				// handle Capture fix level (excludes AJAX calls)
+				case 'capture':
+					if (!is_admin() && !$this->isAjax()) {
+						add_action('init', array($this, 'fixCaptureStart'), 5);
+					}
+					break;
 
-			// handle Content fix level
-			if ($this->options['fix_level'] === 'content') {
-				add_filter('the_content', array($this, 'fixContent'), 9999);		// also for fix_level 'widget'
-				add_filter('widget_text', array($this, 'fixContent'), 9999);		// not for fix_level 'widget' (no need to duplicate effort)
-			}
+				// handle Capture All fix level (even AJAX calls)
+				case 'capture_all':
+					if (!is_admin() || $this->isAjaxNotExcluded()) {
+						add_action('init', array($this, 'fixCaptureStart'), 5);
+					}
+					break;
 
-			// handle Widget fix level
-			if ($this->options['fix_level'] === 'widgets') {
-				add_filter('the_content', array($this, 'fixContent'), 9999);		// also for fix_level 'content'
-				add_action('dynamic_sidebar_before', array($this, 'fixWidgetsStart'), 9999, 2);
-				add_action('dynamic_sidebar_after', array($this, 'fixWidgetsEnd'), 9999, 2);
-			}
-
-			// handle Capture fix level (excludes AJAX calls)
-			if ($this->options['fix_level'] === 'capture' && !$this->isAjax()) {
-				add_action('init', array($this, 'fixCaptureStart'), 5);
-			}
-
-			// handle Capture All fix level (even AJAX calls)
-			if ($this->options['fix_level'] === 'capture_all' && !$this->isAjaxExcluded()) {
-				add_action('init', array($this, 'fixCaptureStart'), 5);
 			}
 
 			// handle some specific plugins
 			if (!empty($this->options['fix_specific'])) {
 				add_action('wp_print_styles', array($this, 'fixSpecific'), 100);
 			}
+
+			// filter WooCommerce cached widget ID
+			add_filter('woocommerce_cached_widget_id', array(__CLASS__, 'woocommerceWidgetID'));
+
+			// filter Gravity Forms confirmation content
+			add_filter('gform_confirmation', array($this, 'fixContent'));
+
+			// filter plugin Image Widget old-style image links
+			add_filter('image_widget_image_url', 'ssl_insecure_content_fix_url');
 		}
 
 		if (is_admin()) {
@@ -118,10 +123,12 @@ class SSLInsecureContentFixer {
 	* exclude certain AJAX calls from capture_all
 	* @return bool
 	*/
-	protected function isAjaxExcluded() {
-		$exclude = false;
+	protected function isAjaxNotExcluded() {
+		$is_ajax = $this->isAjax();
 
-		if ($this->isAjax()) {
+		if ($is_ajax) {
+			$exclude = false;
+
 			if (!empty($_REQUEST['action'])) {
 				$exclude = in_array($_REQUEST['action'], array(
 					// some standard WordPress actions
@@ -132,10 +139,10 @@ class SSLInsecureContentFixer {
 				));
 			}
 
-			$exclude = apply_filters('ssl_insecure_content_ajax_exclude', $exclude);
+			$is_ajax = !apply_filters('ssl_insecure_content_ajax_exclude', $exclude);
 		}
 
-		return $exclude;
+		return $is_ajax;
 	}
 
 	/**
@@ -383,31 +390,6 @@ class SSLInsecureContentFixer {
 		$widget_id .= '_https';
 
 		return $widget_id;
-	}
-
-	/**
-	* disable Capture / Capture All in some circumstances
-	* @param $disable_capture
-	* @return bool
-	*/
-	public static function maybeDisableCapture($disable_capture) {
-		// test for Tools/Export page exporting data
-		if (is_blog_admin() && self::stringEndsWith($_SERVER['SCRIPT_FILENAME'], 'wp-admin/export.php') && isset($_GET['download'])) {
-			$disable_capture = true;
-		}
-
-		return $disable_capture;
-	}
-
-	/**
-	* test whether string ends with sought value
-	* @param string $haystack
-	* @param string $needle
-	* @return bool
-	*/
-	protected static function stringEndsWith($haystack, $needle) {
-		$needle_length = strlen($needle);
-		return substr_compare($haystack, $needle, -$needle_length, $needle_length, true) === 0;
 	}
 
 }

@@ -7,7 +7,7 @@ Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+C
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,15 +98,15 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.3.0 =
+= 2.4.0 =
 
-added support for Windows Azure with ARR; added filter for domains that can be excluded from content cleaning
+don't capture content on admin pages when mode is Capture or Capture All; added filter for disabling Capture modes
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.3.0, 2017-05-01
+### 2.4.0, 2017-05-14
 
-* added: support for Windows Azure with ARR
-* added: filter `ssl_insecure_content_domain_exclusions` for domains that can be excluded from content cleaning (ignored for enqueued scripts)
+* fixed: don't capture content on admin pages when mode is Capture or Capture All
+* added: filter `ssl_insecure_content_disable_capture` for disabling Capture mode on selected pages / scripts

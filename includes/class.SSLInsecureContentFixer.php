@@ -13,7 +13,7 @@ class SSLInsecureContentFixer {
 	public $network_options					= false;
 
 	protected $domain_exclusions			= false;
-	protected $process_only_site            = false;
+	protected $process_only_site			= false;
 
 	/**
 	* static method for getting the instance of this singleton object
@@ -35,7 +35,7 @@ class SSLInsecureContentFixer {
 	private function __construct() {
 		$this->loadOptions();
 		$this->proxyFix();
-        $this->configureSiteOnly();
+		$this->configureSiteOnly();
 
 		add_action('init', array($this, 'init'));
 
@@ -289,10 +289,10 @@ class SSLInsecureContentFixer {
 	* @return string
 	*/
 	public function fixContent_src_callback($matches) {
-	    // support only fixing urls for this WordPress
-        if (!empty($this->process_only_site) && !stripos($matches[0], $this->process_only_site)) {
-            return $matches[0];
-        }
+		// support only fixing urls for this WordPress
+		if (!empty($this->process_only_site) && !stripos($matches[0], $this->process_only_site)) {
+			return $matches[0];
+		}
 		// allow content URL exclusions for selected domains
 		if (!empty($this->domain_exclusions)) {
 			foreach ($this->domain_exclusions as $domain) {

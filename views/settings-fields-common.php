@@ -90,16 +90,16 @@ if (!defined('ABSPATH')) {
 </tr>
 
 <tr valign="top">
-    <th scope="row"><?php echo esc_html_x('Ignoring external sites', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></th>
-    <td>
-        <p><em><?php echo esc_html_x('Select only if you wish to leave content pointing to external sites as http', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></em></p>
-        <ul>
-            <li>
-                <input type="checkbox" name="ssl_insecure_content_fixer[site_only]" id="site_only" value="1" <?php checked(!empty($options['site_only'])); ?> />
-                <label for="site_only">Only fix content pointing to this WordPress site</label>
-            </li>
-        </ul>
-    </td>
+	<th scope="row"><?php echo esc_html_x('Ignoring external sites', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></th>
+	<td>
+		<p><em><?php echo esc_html_x('Select only if you wish to leave content pointing to external sites as http', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></em></p>
+		<ul>
+			<li>
+				<input type="checkbox" name="ssl_insecure_content_fixer[site_only]" id="site_only" value="1" <?php checked(!empty($options['site_only'])); ?> />
+				<label for="site_only">Only fix content pointing to this WordPress site</label>
+			</li>
+		</ul>
+	</td>
 </tr>
 
 <tr valign="top">

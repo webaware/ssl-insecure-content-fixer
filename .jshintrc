@@ -1,5 +1,5 @@
 {
-	"es3": true,
+	"esversion": 5,
 	"immed": true,
 	"latedef": "nofunc",
 	"nonew": true,

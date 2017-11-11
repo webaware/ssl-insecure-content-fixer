@@ -221,6 +221,12 @@ class SSLInsecureContentFixer {
 					}
 					break;
 
+				case 'HTTP_X_FORWARDED_SCHEME':
+					if (!empty($_SERVER['HTTP_X_FORWARDED_SCHEME']) && strtolower($_SERVER['HTTP_X_FORWARDED_SCHEME']) === 'https') {
+						$_SERVER['HTTPS'] = 'on';
+					}
+					break;
+
 				case 'detect_fail':
 					// only force-enable https if site is set to run fully on https
 					if (stripos(get_option('siteurl'), 'https://') === 0) {

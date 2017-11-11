@@ -80,6 +80,10 @@ function sslfix_get_recommended() {
 			$response['recommended'] = 'HTTP_X_ARR_SSL';
 			break;
 
+		case 'HTTP_X_FORWARDED_SCHEME':
+			$response['recommended'] = 'HTTP_X_FORWARDED_SCHEME';
+			break;
+
 		default:
 			$response['recommended'] = 'detect_fail';
 			break;
@@ -198,6 +202,10 @@ function sslfix_get_environment() {
 	}
 	elseif (!empty($_SERVER['HTTP_X_ARR_SSL'])) {
 		$env['detect'] = 'HTTP_X_ARR_SSL';
+		$env['ssl'] = true;
+	}
+	elseif (isset($_SERVER['HTTP_X_FORWARDED_SCHEME']) && strtolower($_SERVER['HTTP_X_FORWARDED_SCHEME']) === 'https') {
+		$env['detect'] = 'HTTP_X_FORWARDED_SCHEME';
 		$env['ssl'] = true;
 	}
 	elseif (isset($_SERVER['HTTP_CF_VISITOR']) && strpos($_SERVER['HTTP_CF_VISITOR'], 'https') !== false) {

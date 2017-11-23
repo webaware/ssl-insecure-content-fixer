@@ -1,6 +1,6 @@
 Options -Indexes
-Allow from all
+Require all granted
 
 <Files *.php>
-Allow from all
+Require all granted
 </Files>

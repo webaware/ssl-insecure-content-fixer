@@ -252,7 +252,7 @@ class SSLInsecureContentFixer {
 	}
 
 	protected function configureSiteOnly() {
-		if ($this->options['site_only']) {
+		if (!empty($this->options['site_only'])) {
 			$this->process_only_site = substr(site_url('', 'https'), 8);
 		}
 	}

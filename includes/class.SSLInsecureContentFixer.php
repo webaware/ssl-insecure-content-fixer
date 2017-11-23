@@ -251,9 +251,12 @@ class SSLInsecureContentFixer {
 		}
 	}
 
+	/**
+	* if Ignore External Sites is selected, record the http site URL for this website
+	*/
 	protected function configureSiteOnly() {
 		if (!empty($this->options['site_only'])) {
-			$this->process_only_site = substr(site_url('', 'https'), 8);
+			$this->process_only_site = site_url('', 'http');
 		}
 	}
 
@@ -295,8 +298,8 @@ class SSLInsecureContentFixer {
 	* @return string
 	*/
 	public function fixContent_src_callback($matches) {
-		// support only fixing urls for this WordPress
-		if (!empty($this->process_only_site) && !stripos($matches[0], $this->process_only_site)) {
+		// support only fixing urls for this website
+		if ($this->process_only_site && stripos($matches[0], $this->process_only_site) !== 0) {
 			return $matches[0];
 		}
 		// allow content URL exclusions for selected domains

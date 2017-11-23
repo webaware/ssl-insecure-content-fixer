@@ -90,7 +90,7 @@ if (!defined('ABSPATH')) {
 </tr>
 
 <tr valign="top">
-	<th scope="row"><?php echo esc_html_x('Ignoring external sites', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></th>
+	<th scope="row"><?php echo esc_html_x('Ignore external sites', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></th>
 	<td>
 		<p><em><?php echo esc_html_x('Select only if you wish to leave content pointing to external sites as http', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></em></p>
 		<ul>

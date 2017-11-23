@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.5.0, 2017-11-23
+
+* added: option to only fix content resource links for the current website; thanks, [Luke Driscoll](https://github.com/ldriscoll)!
+
 ### 2.4.0, 2017-05-14
 
 * fixed: don't capture content on admin pages when mode is Capture or Capture All

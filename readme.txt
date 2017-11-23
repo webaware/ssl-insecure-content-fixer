@@ -6,8 +6,8 @@ Author URI: https://shop.webaware.com.au/
 Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 2.4.0
+Tested up to: 4.9
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,7 +46,7 @@ If you'd like to help out by translating this plugin, please [sign up for an acc
 1. Either install automatically through the WordPress admin, or download the .zip file, unzip to a folder, and upload the folder to your /wp-content/plugins/ directory. Read [Installing Plugins](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins) in the WordPress Codex for details.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-If your browser still reports insecure/mixed content, have a read of the [Cleaning Up page](https://ssl.webaware.net.au/cleaning-up-content/). If that doesn't help, tell me the URL of the problem page in [the support forum](https://wordpress.org/support/plugin/ssl-insecure-content-fixer).
+If your browser still reports insecure/mixed content, have a read of the [Cleaning Up page](https://ssl.webaware.net.au/cleaning-up-content/).
 
 == Frequently Asked Questions ==
 
@@ -98,15 +98,16 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.4.0 =
+= 2.5.0 =
 
-don't capture content on admin pages when mode is Capture or Capture All; added filter for disabling Capture modes
+support for https detection on KeyCDN; option to only fix content resource links for the current website; .htaccess rules file for non-WP test script now supports Apache v2.4
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.4.0, 2017-05-14
+### 2.5.0, 2017-11-23
 
-* fixed: don't capture content on admin pages when mode is Capture or Capture All
-* added: filter `ssl_insecure_content_disable_capture` for disabling Capture mode on selected pages / scripts
+* changed: .htaccess rules file for non-WP test script now supports Apache v2.4; thanks, [Andreas Schneider](https://github.com/cryptomilk)!
+* added: option to only fix content resource links for the current website; thanks, [Luke Driscoll](https://github.com/ldriscoll)!
+* added: support for KeyCDN https detection via the X-Forwarded-Scheme header

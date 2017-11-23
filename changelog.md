@@ -6,6 +6,7 @@
 
 * changed: .htaccess rules file for non-WP test script now supports Apache v2.4; thanks, [Andreas Schneider](https://github.com/cryptomilk)!
 * added: option to only fix content resource links for the current website; thanks, [Luke Driscoll](https://github.com/ldriscoll)!
+* added: support for KeyCDN https detection via the X-Forwarded-Scheme header
 
 ### 2.4.0, 2017-05-14
 

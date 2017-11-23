@@ -96,7 +96,7 @@ if (!defined('ABSPATH')) {
 		<ul>
 			<li>
 				<input type="checkbox" name="ssl_insecure_content_fixer[site_only]" id="site_only" value="1" <?php checked(!empty($options['site_only'])); ?> />
-				<label for="site_only">Only fix content pointing to this WordPress site</label>
+				<label for="site_only"><?php echo esc_html_x('Only fix content pointing to this WordPress site', 'ignore external settings', 'ssl-insecure-content-fixer'); ?></label>
 			</li>
 		</ul>
 	</td>

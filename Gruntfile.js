@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 			build: {
 				options: {
 					ASCIIOnly: true,
-					banner: "// <%= pkg.name %>\n// <%= pkg.homepage %>\n"
+					banner: "// <%= pkg.description %>\n// <%= pkg.homepage %>\n"
 				},
 				files: [{
 					expand: true,

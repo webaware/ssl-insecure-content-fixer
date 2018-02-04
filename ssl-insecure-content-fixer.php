@@ -3,14 +3,14 @@
 Plugin Name: SSL Insecure Content Fixer
 Plugin URI: https://ssl.webaware.net.au/
 Description: Clean up WordPress website HTTPS insecure content
-Version: 2.5.0
+Version: 2.5.1-dev
 Author: WebAware
 Author URI: https://shop.webaware.com.au/
 Text Domain: ssl-insecure-content-fixer
 */
 
 /*
-copyright (c) 2012-2017 WebAware Pty Ltd (email : support@webaware.com.au)
+copyright (c) 2012-2018 WebAware Pty Ltd (email : support@webaware.com.au)
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
 define('SSLFIX_PLUGIN_FILE', __FILE__);
 define('SSLFIX_PLUGIN_ROOT', dirname(__FILE__) . '/');
 define('SSLFIX_PLUGIN_NAME', basename(dirname(__FILE__)) . '/' . basename(__FILE__));
-define('SSLFIX_PLUGIN_VERSION', '2.5.0');
+define('SSLFIX_PLUGIN_VERSION', '2.5.1-dev');
 define('SSLFIX_PLUGIN_OPTIONS', 'ssl_insecure_content_fixer');
 
 require SSLFIX_PLUGIN_ROOT . 'includes/class.SSLInsecureContentFixer.php';

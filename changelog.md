@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.5.1, soon...
+
+* added: new filter `ssl_insecure_content_pcre_version_permissive` allowing sites that can't update PCRE beyond 7.2 to function
+
 ### 2.5.0, 2017-11-23
 
 * changed: .htaccess rules file for non-WP test script now supports Apache v2.4; thanks, [Andreas Schneider](https://github.com/cryptomilk)!

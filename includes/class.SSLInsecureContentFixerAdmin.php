@@ -83,6 +83,9 @@ class SSLInsecureContentFixerAdmin {
 
 		// and PCRE needs to be v8+ or we break! e.g. \K not present until v7.2 and some sites still use v6.6!
 		$pcre_min = '8';
+		if (apply_filters('ssl_insecure_content_pcre_version_permissive', false)) {
+			$pcre_min = '7.2';
+		}
 		if (defined('PCRE_VERSION') && version_compare(PCRE_VERSION, $pcre_min, '<')) {
 			include SSLFIX_PLUGIN_ROOT . 'views/requires-pcre.php';
 		}

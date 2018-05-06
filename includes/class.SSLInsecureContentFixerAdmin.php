@@ -18,8 +18,6 @@ class SSLInsecureContentFixerAdmin {
 		add_action('admin_init', array($this, 'adminInit'));
 		add_action('admin_notices', array($this, 'checkPrerequisites'));
 		add_action('network_admin_notices', array($this, 'checkPrerequisites'));
-		add_action('load-tools_page_ssl-insecure-content-fixer-tests', array($this, 'setNonceCookie'));
-		add_action('load-settings_page_ssl-insecure-content-fixer', array($this, 'setNonceCookie'));
 		add_action('admin_print_styles-settings_page_ssl-insecure-content-fixer', array($this, 'printStylesSettings'));
 		add_action('admin_print_styles-tools_page_ssl-insecure-content-fixer-tests', array($this, 'printStylesTests'));
 		add_action('admin_menu', array($this, 'adminMenu'));
@@ -188,6 +186,8 @@ class SSLInsecureContentFixerAdmin {
 	* settings admin
 	*/
 	public function settingsPage() {
+		require SSLFIX_PLUGIN_ROOT . 'includes/nonces.php';
+
 		if (is_network_admin()) {
 			// multisite network settings
 			$options = SSLInsecureContentFixer::getInstance()->network_options;
@@ -221,6 +221,7 @@ class SSLInsecureContentFixerAdmin {
 		wp_localize_script('sslfix-admin-settings', 'sslfix', array(
 			'ajax_url_wp'	=> ssl_insecure_content_fix_url(admin_url('admin-ajax.php')),
 			'ajax_url_ssl'	=> ssl_insecure_content_fix_url($ajax_url),
+			'test_nonce'	=> ssl_insecure_content_fix_nonce_value(),
 			'msg'			=> array(
 									'recommended'		=> _x('* detected as recommended setting', 'proxy settings', 'ssl-insecure-content-fixer'),
 								),
@@ -260,21 +261,10 @@ class SSLInsecureContentFixerAdmin {
 	}
 
 	/**
-	* set a cookie functioning like a nonce for the non-WP AJAX script
-	*/
-	public function setNonceCookie() {
-		require SSLFIX_PLUGIN_ROOT . 'includes/nonces.php';
-
-		$cookie_name  = ssl_insecure_content_fix_nonce_name(SSLFIX_PLUGIN_ROOT);
-		$cookie_value = ssl_insecure_content_fix_nonce_value();
-
-		setcookie($cookie_name, $cookie_value, time() + 30, '/');
-	}
-
-	/**
 	* show SSL tests page
 	*/
 	public function testPage() {
+		require SSLFIX_PLUGIN_ROOT . 'includes/nonces.php';
 		require SSLFIX_PLUGIN_ROOT . 'views/ssl-tests.php';
 
 		$min = SCRIPT_DEBUG ? '' : '.min';
@@ -286,6 +276,7 @@ class SSLInsecureContentFixerAdmin {
 		wp_localize_script('sslfix-admin-settings', 'sslfix', array(
 			'ajax_url_wp'	=> ssl_insecure_content_fix_url(admin_url('admin-ajax.php')),
 			'ajax_url_ssl'	=> ssl_insecure_content_fix_url($ajax_url),
+			'test_nonce'	=> ssl_insecure_content_fix_nonce_value(),
 		));
 	}
 

@@ -7,10 +7,9 @@ https://ssl.webaware.net.au/
 
 	$.ajax({
 		url:		sslfix.ajax_url_ssl,
-		data:		{ action: "sslfix-environment" },
+		data:		{ action: "sslfix-environment", sslfix_nonce: sslfix.test_nonce },
 		dataType:	"json",
 		method:		"GET",
-		xhrFields:	{ withCredentials: true },
 		error:		showError,
 		success:	showResults
 	});
@@ -68,13 +67,12 @@ https://ssl.webaware.net.au/
 	* show test error
 	* @param {Object} xhr
 	* @param {String} status
-	* @param {String} errmsg
 	*/
-	function showError(xhr, status, errmsg) {
+	function showError(xhr, status) {
 		hideVisible("#sslfix-loading");
 		showHidden("#sslfix-test-result-head");
 		showHidden("#sslfix-environment");
-		$("#sslfix-environment pre").text(status + "\n" + errmsg);
+		$("#sslfix-environment pre").text(status + "\n" + xhr.responseText);
 	}
 
 	$.ajax({

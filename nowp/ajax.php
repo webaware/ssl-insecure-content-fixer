@@ -6,17 +6,16 @@ $sslfix_plugin_root = dirname(dirname(__FILE__)) . '/';
 require $sslfix_plugin_root . 'includes/nonces.php';
 
 /**
-* test for cookie, must have expected name and value
+* test for nonce, must have expected value
 */
 
-$cookie_name  = ssl_insecure_content_fix_nonce_name($sslfix_plugin_root);
-$cookie_value = ssl_insecure_content_fix_nonce_value();
+$sslfix_nonce = ssl_insecure_content_fix_nonce_value();
 
-if (!isset($_COOKIE[$cookie_name])) {
+if (empty($_GET['sslfix_nonce'])) {
 	sslfix_send_error('missing nonce.');
 }
 
-if ($_COOKIE[$cookie_name] !== $cookie_value) {
+if (!hash_equals($sslfix_nonce, $_GET['sslfix_nonce'])) {
 	sslfix_send_error('bad nonce value.');
 }
 

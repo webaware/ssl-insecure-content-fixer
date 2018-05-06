@@ -2,9 +2,10 @@
 
 ## Changelog
 
-### 2.5.1, soon...
+### 2.6.0, soon...
 
 * added: new filter `ssl_insecure_content_pcre_version_permissive` allowing sites that can't update PCRE beyond 7.2 to function
+* changed: no longer sets a cookie on test or settings pages
 
 ### 2.5.0, 2017-11-23
 

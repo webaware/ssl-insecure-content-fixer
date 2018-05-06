@@ -7,10 +7,9 @@ https://ssl.webaware.net.au/
 
 	$.ajax({
 		url:		sslfix.ajax_url_ssl,
-		data:		{ action: "sslfix-get-recommended" },
+		data:		{ action: "sslfix-get-recommended", sslfix_nonce: sslfix.test_nonce },
 		dataType:	"json",
 		method:		"GET",
-		xhrFields:	{ withCredentials: true },
 		success:	showRecommended
 	});
 

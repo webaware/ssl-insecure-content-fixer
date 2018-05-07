@@ -49,6 +49,9 @@ class SSLInsecureContentFixer {
 			// filter uploads dir so that plugins using it to determine upload URL also work
 			add_filter('upload_dir', array(__CLASS__, 'uploadDir'));
 
+			// catch plugins / themes overriding the user's avatar and breaking it
+			add_filter('get_avatar', array($this, 'fixContent'), 9999);
+
 			// filter image links on front end e.g. in calls to wp_get_attachment_image(), wp_get_attachment_image_src(), etc.
 			if (!is_admin() || $this->isAjax()) {
 				add_filter('wp_get_attachment_url', 'ssl_insecure_content_fix_url', 100);

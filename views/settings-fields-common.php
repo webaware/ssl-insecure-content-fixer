@@ -54,7 +54,7 @@ if (!defined('ABSPATH')) {
 				<p class="sslfix-level-desc"><?php echo esc_html_x('Everything on the page, from the header to the footer:', 'fix level settings', 'ssl-insecure-content-fixer'); ?></p>
 				<ul class="sslfix-bullets">
 					<li><?php echo esc_html_x('capture the whole page and fix scripts, stylesheets, and other resources', 'fix level settings', 'ssl-insecure-content-fixer'); ?></li>
-					<li><?php echo esc_html_x('excludes AJAX calls, which can cause compatibility and performance problems', 'fix level settings', 'ssl-insecure-content-fixer'); ?></li>
+					<li><?php echo esc_html_x('excludes AJAX calls, to prevent some compatibility and performance problems', 'fix level settings', 'ssl-insecure-content-fixer'); ?></li>
 				</ul>
 			</li>
 

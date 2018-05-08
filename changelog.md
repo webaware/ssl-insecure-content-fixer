@@ -2,7 +2,7 @@
 
 ## Changelog
 
-### 2.6.0, soon...
+### 2.6.0, 2018-05-08
 
 * added: new filter `ssl_insecure_content_pcre_version_permissive` allowing sites that can't update PCRE beyond 7.2 to function
 * added: fix for plugins / themes overriding avatars and breaking them with insecure content

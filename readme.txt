@@ -8,7 +8,7 @@ Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 2.5.0
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,16 +99,16 @@ Great! Tell me which plugin is yours and how to check for your new version, and 
 
 == Upgrade Notice ==
 
-= 2.5.0 =
+= 2.6.0 =
 
-support for https detection on KeyCDN; option to only fix content resource links for the current website; .htaccess rules file for non-WP test script now supports Apache v2.4
+no longer sets a cookie on test or settings pages; fixes Gravatars with insecure content; support for sites that can't update PCRE beyond 7.2
 
 == Changelog ==
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.5.0, 2017-11-23
+### 2.6.0, 2018-05-08
 
-* changed: .htaccess rules file for non-WP test script now supports Apache v2.4; thanks, [Andreas Schneider](https://github.com/cryptomilk)!
-* added: option to only fix content resource links for the current website; thanks, [Luke Driscoll](https://github.com/ldriscoll)!
-* added: support for KeyCDN https detection via the X-Forwarded-Scheme header
+* added: new filter `ssl_insecure_content_pcre_version_permissive` allowing sites that can't update PCRE beyond 7.2 to function
+* added: fix for plugins / themes overriding avatars and breaking them with insecure content
+* changed: no longer sets a cookie on test or settings pages

@@ -15,7 +15,7 @@ if (empty($_GET['sslfix_nonce'])) {
 	sslfix_send_error('missing nonce.');
 }
 
-if (!hash_equals($sslfix_nonce, $_GET['sslfix_nonce'])) {
+if (!ssl_fix_hash_equals($sslfix_nonce, $_GET['sslfix_nonce'])) {
 	sslfix_send_error('bad nonce value.');
 }
 
@@ -254,4 +254,32 @@ function sslfix_send_error($msg) {
 
 	echo $msg;
 	exit;
+}
+
+/**
+* timing-attack safe string comparison for comparing security tokens
+* PHP 5.6+ has `hash_equals()` so call that if it exists
+* @param string $a
+* @param string $b
+* @return bool
+*/
+function ssl_fix_hash_equals($a, $b) {
+	// check for native function and use it preferentially
+	if (function_exists('hash_equals')) {
+		return hash_equals($a, $b);
+	}
+
+	// need to do the comparison ourselves
+	// @link https://php.net/manual/en/function.hash-hmac.php#111435
+
+	$len = strlen($a);
+	if ($len !== strlen($b)) {
+		return false;
+	}
+
+	$status = 0;
+	for ($i = 0; $i < $len; $i++) {
+		$status |= ord($a[$i]) ^ ord($b[$i]);
+	}
+	return $status === 0;
 }

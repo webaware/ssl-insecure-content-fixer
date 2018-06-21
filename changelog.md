@@ -4,6 +4,7 @@
 
 ### 2.6.1, soon...
 
+* added: fix for responsive images loaded by JavaScript from image data attributes
 * fixed: call to undefined function `hash_equals()` on environments with obsolete PHP versions (i.e. < 5.6)
 
 ### 2.6.0, 2018-05-08

@@ -292,6 +292,9 @@ class SSLInsecureContentFixer {
 		);
 		$content = preg_replace_callback($embed_searches, array($this, 'fixContent_embed_callback'), $content);
 
+		// fix responsive images with data-* attributes
+		$content = preg_replace_callback('#<img [^>]*data-[^\'"]+=["\'][^>]+#is', array($this, 'fixContent_data_attr_callback'), $content);
+
 		return $content;
 	}
 
@@ -326,6 +329,17 @@ class SSLInsecureContentFixer {
 	public function fixContent_embed_callback($matches) {
 		// match from start of http: URL until either end quotes, space, or query parameter separator, thus allowing for URLs in parameters
 		$content = preg_replace_callback('#http://[^\'"&\? ]+#i', array($this, 'fixContent_src_callback'), $matches[0]);
+
+		return $content;
+	}
+
+	/**
+	* callback for fixContent() regex replace for data attributes on images
+	* @param array $matches
+	* @return string
+	*/
+	public function fixContent_data_attr_callback($matches) {
+		$content = preg_replace_callback('#data-[^\'"]+=[\'"]\Khttp://[^\'"]+#i', array($this, 'fixContent_src_callback'), $matches[0]);
 
 		return $content;
 	}

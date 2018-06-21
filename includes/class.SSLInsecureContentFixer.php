@@ -39,7 +39,7 @@ class SSLInsecureContentFixer {
 
 		add_action('init', array($this, 'loadTranslations'));
 
-		if ($this->options['fix_level'] !== 'off' && is_ssl()) {
+		if ($this->allowFixer()) {
 			add_action('init', array($this, 'runFilters'), 4);
 
 			// filter script and stylesheet links
@@ -109,6 +109,43 @@ class SSLInsecureContentFixer {
 			require SSLFIX_PLUGIN_ROOT . 'includes/class.SSLInsecureContentFixerAdmin.php';
 			new SSLInsecureContentFixerAdmin();
 		}
+	}
+
+	/**
+	* see whether the fixer should be run for this request
+	* @return bool
+	*/
+	protected function allowFixer() {
+		// do nothing if fixer is turned off
+		if ($this->options['fix_level'] === 'off') {
+			return false;
+		}
+
+		// don't mess with WooCommerce downloads
+		if (isset($_GET['download_file']) && isset($_GET['order']) && (isset($_GET['email']) || isset($_GET['uid']))) {
+			// but ensure that WooCommerce is active and will handle this request
+			if ($this->isPluginActive('woocommerce/woocommerce.php')) {
+				return false;
+			}
+		}
+
+		return is_ssl();
+	}
+
+	/**
+	* test whether a plugin is active
+	* @param string $plugin
+	* @return bool
+	*/
+	protected function isPluginActive($plugin) {
+		if (is_multisite()) {
+			$plugins = (array) get_site_option('active_sitewide_plugins', array());
+			if (isset($plugins[$plugin])) {
+				return true;
+			}
+		}
+
+		return in_array($plugin, (array) get_option('active_plugins', array()));
 	}
 
 	/**

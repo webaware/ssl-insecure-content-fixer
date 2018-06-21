@@ -37,7 +37,7 @@ class SSLInsecureContentFixer {
 		$this->proxyFix();
 		$this->configureSiteOnly();
 
-		add_action('init', array($this, 'init'));
+		add_action('init', array($this, 'loadTranslations'));
 
 		if ($this->options['fix_level'] !== 'off' && is_ssl()) {
 			add_action('init', array($this, 'runFilters'), 4);
@@ -266,7 +266,7 @@ class SSLInsecureContentFixer {
 	/**
 	* load text translations
 	*/
-	public function init() {
+	public function loadTranslations() {
 		load_plugin_textdomain('ssl-insecure-content-fixer');
 	}
 

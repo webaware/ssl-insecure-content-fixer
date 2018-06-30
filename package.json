@@ -1,6 +1,6 @@
 {
   "name": "ssl-insecure-content-fixer",
-  "version": "2.6.1",
+  "version": "2.7.0",
   "description": "SSL Insecure Content Fixer",
   "main": "Gruntfile.js",
   "devDependencies": {

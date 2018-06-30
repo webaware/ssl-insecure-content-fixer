@@ -42,6 +42,10 @@ Many thanks to the generous efforts of our translators:
 
 If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer).
 
+### Privacy
+
+SSL Insecure Content Fixer does not collect any personally identifying information, and does not set any cookies.
+
 ## Installation
 
 1. Either install automatically through the WordPress admin, or download the .zip file, unzip to a folder, and upload the folder to your /wp-content/plugins/ directory. Read [Installing Plugins](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins) in the WordPress Codex for details.

@@ -111,7 +111,9 @@ fix responsive images loaded by JavaScript; fix call to undefined function `hash
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.7.0, 2018-06-30
+### 2.7.0
+
+2018-06-30
 
 * added: fix for responsive images loaded by JavaScript from image data attributes
 * fixed: call to undefined function `hash_equals()` on environments with obsolete PHP versions (i.e. < 5.6)

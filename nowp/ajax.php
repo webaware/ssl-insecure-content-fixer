@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable Generic.PHP.NoSilencedErrors.Discouraged
 
 // compute the path to the plugin's root folder
 $sslfix_plugin_root = dirname(dirname(__FILE__)) . '/';

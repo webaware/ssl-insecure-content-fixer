@@ -6,9 +6,9 @@ Author URI: https://shop.webaware.com.au/
 Donate link: https://shop.webaware.com.au/donations/?donation_for=SSL+Insecure+Content+Fixer
 Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
-Tested up to: 4.9
+Tested up to: 5.0
 Requires PHP: 5.3
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,7 @@ Many thanks to the generous efforts of our translators:
 * Chinese simplified (zh_CN) -- [the Chinese translation team](https://translate.wordpress.org/locale/zh-cn/default/wp-plugins/ssl-insecure-content-fixer)
 * English (en_CA) -- [the English (Canadian) translation team](https://translate.wordpress.org/locale/en-ca/default/wp-plugins/ssl-insecure-content-fixer)
 * English (en_GB) -- [the English (British) translation team](https://translate.wordpress.org/locale/en-gb/default/wp-plugins/ssl-insecure-content-fixer)
+* English (en_ZA) -- [the English (South African) translation team](https://translate.wordpress.org/locale/en-za/default/wp-plugins/ssl-insecure-content-fixer)
 * Dutch (nl_NL) -- [the Dutch translation team](https://translate.wordpress.org/locale/nl/default/wp-plugins/ssl-insecure-content-fixer)
 * German (de_DE) -- [the German translation team](https://translate.wordpress.org/locale/de/default/wp-plugins/ssl-insecure-content-fixer)
 * French (fr_FR) -- [the French translation team](https://translate.wordpress.org/locale/fr/default/wp-plugins/ssl-insecure-content-fixer)
@@ -96,23 +97,23 @@ Post about it to [the support forum](https://wordpress.org/support/plugin/ssl-in
 
 Great! Tell me which plugin is yours and how to check for your new version, and I'll drop the "fix" from my next release.
 
-## Contributions
+### Contributions
 
 * [Translate into your preferred language](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer)
 * [Fork me on GitHub](https://github.com/webaware/ssl-insecure-content-fixer)
 
 ## Upgrade Notice
 
-### 2.7.0
+### 2.7.1
 
-fix responsive images loaded by JavaScript; fix call to undefined function `hash_equals()`; don't run the fixer on a WooCommerce download request
+tested with WordPress 5.0
 
 ## Changelog
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.7.0, 2018-06-30
+### 2.7.1
 
-* added: fix for responsive images loaded by JavaScript from image data attributes
-* fixed: call to undefined function `hash_equals()` on environments with obsolete PHP versions (i.e. < 5.6)
-* fixed: don't run the fixer when a WooCommerce download request is detected
+Released 2018-11-21
+
+* tested: WordPress 5.0

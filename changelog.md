@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.7.1, 2018-11-21
+
+* tested: WordPress 5.0
+
 ### 2.7.0, 2018-06-30
 
 * added: fix for responsive images loaded by JavaScript from image data attributes

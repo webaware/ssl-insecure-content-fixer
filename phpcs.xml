@@ -12,7 +12,7 @@
 	<arg name="extensions" value="php" />
 	<arg name="tab-width" value="4" />
 
-	<config name="testVersion" value="5.6-"/>
+	<config name="testVersion" value="5.3-"/>
 
 	<rule ref="PHPCompatibility" />
 

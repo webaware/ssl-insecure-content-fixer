@@ -267,6 +267,7 @@ function sslfix_send_error($msg) {
 function ssl_fix_hash_equals($a, $b) {
 	// check for native function and use it preferentially
 	if (function_exists('hash_equals')) {
+		// phpcs:ignore PHPCompatibility.FunctionUse.NewFunctions.hash_equalsFound
 		return hash_equals($a, $b);
 	}
 

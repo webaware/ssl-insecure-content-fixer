@@ -27,11 +27,16 @@
     	"no-useless-call": "error",
     	"no-useless-concat": "error",
     	"no-useless-return": "error",
+		"no-var": "error",
     	"no-warning-comments": "warn",
     	"no-with": "error",
     	"wrap-iife": ["error", "any"],
     	"no-shadow-restricted-names": "error",
     },
+
+	"parserOptions": {
+		"ecmaVersion": 6
+	},
 
 	"env": {
 		"browser": true,

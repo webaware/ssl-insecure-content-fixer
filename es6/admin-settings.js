@@ -19,7 +19,7 @@ https://ssl.webaware.net.au/
 	*/
 	function showRecommended(response) {
 		if (response.recommended) {
-			var label = $("label[for=" + response.recommended_element + "]");
+			const label = $("label[for=" + response.recommended_element + "]");
 			label.addClass("sslfix-recommended");
 			label.html(label.html() + "<br/><span>" + sslfix.msg.recommended + "</span>");
 		}

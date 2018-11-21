@@ -3,13 +3,22 @@
   "version": "2.7.0",
   "description": "SSL Insecure Content Fixer",
   "main": "Gruntfile.js",
+  "browserslist": [
+    "> 0.5%",
+    "ios >= 9.3.5",
+    "not dead"
+  ],
   "devDependencies": {
-    "grunt": "^1.0.2",
-    "grunt-contrib-clean": "^1.1.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "grunt": "^1.0.3",
+    "grunt-babel": "^8.0.0",
+    "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^3.3.0",
-    "grunt-eslint": "^20.1.0"
+    "grunt-contrib-uglify-es": "^3.3.0",
+    "grunt-eslint": "^21.0.0"
   },
   "repository": {
     "type": "git",

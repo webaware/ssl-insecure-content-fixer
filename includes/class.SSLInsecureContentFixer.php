@@ -315,7 +315,7 @@ class SSLInsecureContentFixer {
 	public function fixContent($content) {
 		static $searches = array(
 			'#<(?:img|iframe) .*?src=[\'"]\Khttp://[^\'"]+#i',		// fix image and iframe elements
-			'#<link [^>]+href=[\'"]\Khttp://[^\'"]+#i',				// fix link elements
+			'#<link [^>]*href=[\'"]\Khttp://[^\'"]+#i',				// fix link elements
 			'#<script [^>]*?src=[\'"]\Khttp://[^\'"]+#i',			// fix script elements
 			'#url\([\'"]?\Khttp://[^)]+#i',							// inline CSS e.g. background images
 		);
@@ -325,7 +325,7 @@ class SSLInsecureContentFixer {
 		static $embed_searches = array(
 			'#<object .*?</object>#is',								// fix object elements, including contained embed elements
 			'#<embed .*?(?:/>|</embed>)#is',						// fix embed elements, not contained in object elements
-			'#<img [^>]+srcset=["\']\K[^"\']+#is',					// responsive image srcset links (to external images; WordPress already handles local images)
+			'#<img [^>]*srcset=["\']\K[^"\']+#is',					// responsive image srcset links (to external images; WordPress already handles local images)
 		);
 		$content = preg_replace_callback($embed_searches, array($this, 'fixContent_embed_callback'), $content);
 

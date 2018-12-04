@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2.7.2, 2018-12-04
+
+* fixed: was missing some hard-coded link elements (e.g. stylesheets) when href was the first attribute
+
 ### 2.7.1, 2018-11-21
 
 * tested: WordPress 5.0

@@ -8,7 +8,7 @@ Tags: ssl, https, insecure content, partially encrypted, mixed content
 Requires at least: 4.0
 Tested up to: 5.0
 Requires PHP: 5.3
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,23 +97,18 @@ Post about it to [the support forum](https://wordpress.org/support/plugin/ssl-in
 
 Great! Tell me which plugin is yours and how to check for your new version, and I'll drop the "fix" from my next release.
 
-### Contributions
-
-* [Translate into your preferred language](https://translate.wordpress.org/projects/wp-plugins/ssl-insecure-content-fixer)
-* [Fork me on GitHub](https://github.com/webaware/ssl-insecure-content-fixer)
-
 ## Upgrade Notice
 
-### 2.7.1
+### 2.7.2
 
-tested with WordPress 5.0
+fixes some hard-coded link elements (e.g. stylesheets) when href is the first attribute
 
 ## Changelog
 
 The full changelog can be found [on GitHub](https://github.com/webaware/ssl-insecure-content-fixer/blob/master/changelog.md). Recent entries:
 
-### 2.7.1
+### 2.7.2
 
-Released 2018-11-21
+Released 2018-12-04
 
-* tested: WordPress 5.0
+* fixed: some hard-coded link elements (e.g. stylesheets) when href is the first attribute

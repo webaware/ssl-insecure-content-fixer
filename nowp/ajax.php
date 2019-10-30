@@ -167,7 +167,7 @@ function sslfix_environment() {
 	// build server environment to return, without blacklisted keys
 	$env = array_diff_key($_SERVER, $env_blacklist);
 
-	$response['env'] = print_r($env, 1);
+	$response['env'] = print_r($env, 1);	// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 
 	sslfix_send_json($response);
 }

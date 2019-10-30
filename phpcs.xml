@@ -12,7 +12,7 @@
 	<arg name="extensions" value="php" />
 	<arg name="tab-width" value="4" />
 
-	<config name="testVersion" value="5.3-"/>
+	<config name="testVersion" value="5.6-"/>
 
 	<rule ref="PHPCompatibility" />
 
@@ -43,6 +43,10 @@
 		</properties>
 	</rule>
 
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax">
+		<exclude-pattern>includes/functions-global.php</exclude-pattern>
+	</rule>
+
 	<rule ref="Generic.WhiteSpace.ScopeIndent">
 		<properties>
 			<property name="tabIndent" value="true" />
@@ -50,5 +54,8 @@
 	</rule>
 
 	<rule ref="Squiz.PHP.CommentedOutCode" />
+	<rule ref="Squiz.PHP.DiscouragedFunctions" />
+	<rule ref="Squiz.PHP.NonExecutableCode" />
+	<rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
 
 </ruleset>
